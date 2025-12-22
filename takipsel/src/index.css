@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+    body {
+        @apply bg-slate-950 text-slate-50 font-sans antialiased;
+        font-family: 'Inter', system-ui, sans-serif;
+    }
+}
+
+@layer utilities {
+    .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+    }
+}
