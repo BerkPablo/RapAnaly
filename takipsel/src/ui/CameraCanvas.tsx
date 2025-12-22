@@ -322,8 +322,7 @@ export const CameraCanvas = React.forwardRef<CameraCanvasHandle, Props>(({
 
     return (
         <div
-            className="relative bg-black rounded-lg overflow-hidden shadow-xl"
-            style={{ width: VIDEO_WIDTH, height: VIDEO_HEIGHT }}
+            className="relative bg-black rounded-lg overflow-hidden shadow-xl w-full max-w-[960px] mx-auto aspect-[4/3]"
         >
             {/* Model Loading / Error Overlay */}
             {!modelLoaded && (
@@ -404,7 +403,7 @@ export const CameraCanvas = React.forwardRef<CameraCanvasHandle, Props>(({
                 width={VIDEO_WIDTH}
                 height={VIDEO_HEIGHT}
                 mirrored={true}
-                className="absolute top-0 left-0"
+                className="absolute top-0 left-0 w-full h-full object-contain"
                 videoConstraints={{
                     width: VIDEO_WIDTH,
                     height: VIDEO_HEIGHT,
@@ -415,7 +414,7 @@ export const CameraCanvas = React.forwardRef<CameraCanvasHandle, Props>(({
                 ref={internalCanvasRef}
                 width={VIDEO_WIDTH}
                 height={VIDEO_HEIGHT}
-                className="absolute top-0 left-0 z-10 pointer-events-none"
+                className="absolute top-0 left-0 z-10 pointer-events-none w-full h-full object-contain"
                 style={{ background: 'transparent' }}
             />
         </div>

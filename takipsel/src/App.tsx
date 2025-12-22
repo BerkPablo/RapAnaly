@@ -124,7 +124,7 @@ function App() {
           </header>
 
           {/* Viewport */}
-          <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-black shadow-2xl shadow-green-900/10 min-h-[720px] flex items-center justify-center">
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-black shadow-2xl shadow-green-900/10 flex items-center justify-center">
             <CameraCanvas
               ref={canvasRef}
               onPoseUpdate={handlePoseUpdate}
