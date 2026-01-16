@@ -166,21 +166,45 @@ function App() {
   };
 
   const onLoad = (session: SavedSession) => {
-    // In a real app, we'd load the full data from DB using session.id
-    // For now, we just show metadata/alert as requested, or fetch it.
-    // Fetching Logic:
     supabase.from('sessions').select('data').eq('id', session.id).single()
-      .then(({ data }) => {
-        if (data && data.data) {
-          // We need to parse this back into deviceData structure if we want to restore standard view
-          // But the app expects CSV parsing flow. 
-          // For this scope, let's just alert or log as the original code did, 
-          // or maybe just say "Loaded!"
-          // The user didn't explicitly ask for "Reload Session Data" implementation in this prompt, 
-          // just "Migrate Storage".
-          alert(`Loaded session ${session.id}. (Data restore not fully implemented in this MVP step)`);
-        } else {
+      .then(({ data, error }) => {
+        if (error) {
+          console.error("Error fetching session:", error);
           alert("Error loading session data.");
+          return;
+        }
+
+        if (data && data.data) {
+          const rows = data.data as Row[];
+          
+          const newDeviceData: {
+            mlmds: Record<string, DeviceData>;
+            pro2: Record<string, DeviceData>;
+            pro3: Record<string, DeviceData>;
+          } = {
+            mlmds: {},
+            pro2: {},
+            pro3: {},
+          };
+
+          rows.forEach((r) => {
+            if (r.mlmds) newDeviceData.mlmds[r.shotId] = r.mlmds;
+            // Handle potentially missing device data in older saves or just safety
+            if (r.pro2) newDeviceData.pro2[r.shotId] = r.pro2;
+            if (r.pro3) newDeviceData.pro3[r.shotId] = r.pro3;
+          });
+
+          setDeviceData(newDeviceData);
+          setActiveView("compare");
+          // Optional: Restore firmware versions if they were saved in metadata
+          if (session.devices) {
+             setFwVersions(prev => ({
+                 ...prev,
+                 mlmds: session.devices.mlmds || prev.mlmds,
+                 pro2: session.devices.pro2 || prev.pro2,
+                 pro3: session.devices.pro3 || prev.pro3,
+             }));
+          }
         }
       });
   };
