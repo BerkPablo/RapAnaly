@@ -1,0 +1,34 @@
+Building com.berkharmandar.reflexWar for simulator (ios)...
+Running Xcode build...                                          
+Xcode build done.                                           21.0s
+Failed to build iOS app
+Error output from Xcode build:
+↳
+    ** BUILD FAILED **
+
+
+Xcode's output:
+↳
+    Writing result bundle at path:
+    	/var/folders/06/44xzwd3x52s6myr5vt6f5fwr0000gq/T/flutter_tools.MRBixk/flutter_ios_build_temp_dirk0LawA/temporary_xcresult_bundle
+
+    lib/features/menu/presentation/screens/menu_screen.dart:155:89: Error: Member not found: 'team'.
+                      if (_selectedMode != GameMode.scoreboard && _selectedMode != GameMode.team) // Hide 1P/2P/3P for Team
+                                                                                          ^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:158:49: Error: Member not found: 'team'.
+                      if (_selectedMode != GameMode.team)
+                                                    ^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:161:50: Error: Member not found: 'team'.
+                       if (_selectedMode != GameMode.team)
+                                                     ^^^^
+    Target kernel_snapshot_program failed: Exception
+    Failed to package /Users/berkharmandar/Desktop/BerkProjects/ReflexWar.
+    Command PhaseScriptExecution failed with a nonzero exit code
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'GoogleUserMessagingPlatform' from project 'Pods')
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Google-Mobile-Ads-SDK' from project 'Pods')
+    note: Run script build phase 'Run Script' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+    warning: Run script build phase '[CP] Embed Pods Frameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+    warning: Run script build phase '[CP] Copy Pods Resources' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+    note: Run script build phase 'Thin Binary' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+
+Encountered error while building for simulator.

@@ -1,0 +1,353 @@
+Building com.berkharmandar.reflexWar for simulator (ios)...
+Running Xcode build...                                          
+Xcode build done.                                            7.7s
+Failed to build iOS app
+Error output from Xcode build:
+↳
+    ** BUILD FAILED **
+
+
+Xcode's output:
+↳
+    Writing result bundle at path:
+    	/var/folders/06/44xzwd3x52s6myr5vt6f5fwr0000gq/T/flutter_tools.q5ejFD/flutter_ios_build_temp_dirzf4Wav/temporary_xcresult_bundle
+
+    lib/features/game/presentation/screens/game_screen.dart:121:11: Error: 'Expanded' is imported from both 'package:flutter/src/widgets/basic.dart' and 'package:reflex_war/features/game/presentation/widgets/player_area.dart'.
+              Expanded(
+              ^^^^^^^^
+    lib/features/game/presentation/screens/game_screen.dart:136:11: Error: 'Expanded' is imported from both 'package:flutter/src/widgets/basic.dart' and 'package:reflex_war/features/game/presentation/widgets/player_area.dart'.
+              Expanded(
+              ^^^^^^^^
+    lib/features/game/presentation/screens/game_screen.dart:144:11: Error: 'Expanded' is imported from both 'package:flutter/src/widgets/basic.dart' and 'package:reflex_war/features/game/presentation/widgets/player_area.dart'.
+              Expanded(
+              ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:111:5: Error: 'if' can't be used as an identifier because it's a keyword.
+    Try renaming this to be an identifier that isn't a keyword.
+        if (state.status == GameStatus.action && !state.disqualified.contains(playerId)) {
+        ^^
+    lib/features/game/presentation/widgets/player_area.dart:111:22: Error: Expected an identifier, but got '=='.
+    Try inserting an identifier before '=='.
+        if (state.status == GameStatus.action && !state.disqualified.contains(playerId)) {
+                         ^^
+    lib/features/game/presentation/widgets/player_area.dart:111:25: Error: Expected ')' before this.
+        if (state.status == GameStatus.action && !state.disqualified.contains(playerId)) {
+                            ^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:190:7: Error: 'else' can't be used as an identifier because it's a keyword.
+    Try renaming this to be an identifier that isn't a keyword.
+        } else {
+          ^^^^
+    lib/features/game/presentation/widgets/player_area.dart:190:7: Error: A function declaration needs an explicit list of parameters.
+    Try adding a parameter list to the function declaration.
+        } else {
+          ^^^^
+    lib/features/game/presentation/widgets/player_area.dart:198:5: Error: Variables must be declared using the keywords 'const', 'final', 'var' or a type name.
+    Try adding the name of the type of the variable or the keyword 'var'.
+        return Expanded(
+        ^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:198:5: Error: 'return' can't be used as an identifier because it's a keyword.
+    Try renaming this to be an identifier that isn't a keyword.
+        return Expanded(
+        ^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:198:5: Error: Expected ';' after this.
+        return Expanded(
+        ^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:199:12: Error: Non-optional parameters can't have a default value.
+    Try removing the default value or making the parameter optional.
+          child: Listener(
+               ^
+    lib/features/game/presentation/widgets/player_area.dart:245:6: Error: Expected a function body or '=>'.
+    Try adding {}.
+        );
+         ^
+    lib/features/game/presentation/widgets/player_area.dart:246:3: Error: Expected a declaration, but got '}'.
+      }
+      ^
+    lib/features/game/presentation/widgets/player_area.dart:280:1: Error: Expected a declaration, but got '}'.
+    }
+    ^
+    lib/features/game/presentation/widgets/player_area.dart:111:9: Error: 'state.status' can't be used as a type because 'state' doesn't refer to an import prefix.
+        if (state.status == GameStatus.action && !state.disqualified.contains(playerId)) {
+            ^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:109:12: Error: Field 'content' should be initialized because its type 'Widget' doesn't allow null.
+     - 'Widget' is from 'package:flutter/src/widgets/framework.dart' ('/opt/homebrew/share/flutter/packages/flutter/lib/src/widgets/framework.dart').
+        Widget content;
+               ^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:96:11: Error: A break statement can't be used outside of a loop or switch statement.
+    Try removing the break statement.
+              break;
+              ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:97:9: Error: 'case' can't be used as an identifier because it's a keyword.
+    Try renaming this to be an identifier that isn't a keyword.
+            case GameStatus.matchOver:
+            ^^^^
+    lib/features/game/presentation/widgets/player_area.dart:97:9: Error: Expected ';' after this.
+            case GameStatus.matchOver:
+            ^^^^
+    lib/features/game/presentation/widgets/player_area.dart:97:25: Error: Expected ';' after this.
+            case GameStatus.matchOver:
+                            ^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:97:34: Error: Expected an identifier, but got ':'.
+    Try inserting an identifier before ':'.
+            case GameStatus.matchOver:
+                                     ^
+    lib/features/game/presentation/widgets/player_area.dart:97:34: Error: Unexpected token ';'.
+            case GameStatus.matchOver:
+                                     ^
+    lib/features/game/presentation/widgets/player_area.dart:104:12: Error: A break statement can't be used outside of a loop or switch statement.
+    Try removing the break statement.
+               break;
+               ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:97:9: Error: The getter 'case' isn't defined for the type 'PlayerArea'.
+     - 'PlayerArea' is from 'package:reflex_war/features/game/presentation/widgets/player_area.dart' ('lib/features/game/presentation/widgets/player_area.dart').
+    Try correcting the name to the name of an existing getter, or defining a getter or field named 'case'.
+            case GameStatus.matchOver:
+            ^^^^
+    lib/features/game/presentation/widgets/player_area.dart:21:10: Error: A non-null value must be returned since the return type 'Widget' doesn't allow null.
+     - 'Widget' is from 'package:flutter/src/widgets/framework.dart' ('/opt/homebrew/share/flutter/packages/flutter/lib/src/widgets/framework.dart').
+      Widget build(BuildContext context) {
+             ^
+    lib/features/game/presentation/widgets/player_area.dart:112:12: Error: Undefined name 'state'.
+           if (state.mode == GameMode.precision) {
+               ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:118:62: Error: Undefined name 'playerId'.
+                       onTap: () => notifier.handlePrecisionMiss(playerId),
+                                                                 ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:118:33: Error: Undefined name 'notifier'.
+                       onTap: () => notifier.handlePrecisionMiss(playerId),
+                                    ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:122:21: Error: Undefined name 'state'.
+                    if (state.targetAlignments.containsKey(playerId))
+                        ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:122:56: Error: Undefined name 'playerId'.
+                    if (state.targetAlignments.containsKey(playerId))
+                                                           ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:124:34: Error: Undefined name 'state'.
+                          alignment: state.targetAlignments[playerId]!,
+                                     ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:124:57: Error: Undefined name 'playerId'.
+                          alignment: state.targetAlignments[playerId]!,
+                                                            ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:126:71: Error: Undefined name 'playerId'.
+                             onTapDown: (_) => notifier.handleInteraction(playerId, isDown: true),
+                                                                          ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:126:44: Error: Undefined name 'notifier'.
+                             onTapDown: (_) => notifier.handleInteraction(playerId, isDown: true),
+                                               ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:142:19: Error: Undefined name 'state'.
+           } else if (state.mode == GameMode.brain && state.currentQuestion != null) {
+                      ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:142:51: Error: Undefined name 'state'.
+           } else if (state.mode == GameMode.brain && state.currentQuestion != null) {
+                                                      ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:143:21: Error: Undefined name 'state'.
+              final q = state.currentQuestion!;
+                        ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:145:30: Error: Undefined name 'playerId'.
+              final bool swap = (playerId + q.hashCode) % 2 == 0;
+                                 ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:156:66: Error: Undefined name 'playerId'.
+                             onTap: () => notifier.handleBrainChoice(playerId, choice1),
+                                                                     ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:156:39: Error: Undefined name 'notifier'.
+                             onTap: () => notifier.handleBrainChoice(playerId, choice1),
+                                          ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:154:28: Error: Too few positional arguments: 1 required, 0 given.
+                       Expanded(
+                               ^
+    lib/features/game/presentation/widgets/player_area.dart:198:12: Context: Found this candidate, but the arguments don't match.
+        return Expanded(
+               ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:169:66: Error: Undefined name 'playerId'.
+                             onTap: () => notifier.handleBrainChoice(playerId, choice2),
+                                                                     ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:169:39: Error: Undefined name 'notifier'.
+                             onTap: () => notifier.handleBrainChoice(playerId, choice2),
+                                          ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:167:28: Error: Too few positional arguments: 1 required, 0 given.
+                       Expanded(
+                               ^
+    lib/features/game/presentation/widgets/player_area.dart:198:12: Context: Found this candidate, but the arguments don't match.
+        return Expanded(
+               ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:186:21: Error: Undefined name 'backgroundColor'.
+                 color: backgroundColor,
+                        ^^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:187:53: Error: Undefined name 'text'.
+                 child: Center(child: _buildTextContent(text, textColor, playerId, quarterTurns)),
+                                                        ^^^^
+    lib/features/game/presentation/widgets/player_area.dart:187:59: Error: Undefined name 'textColor'.
+                 child: Center(child: _buildTextContent(text, textColor, playerId, quarterTurns)),
+                                                              ^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:187:70: Error: Undefined name 'playerId'.
+                 child: Center(child: _buildTextContent(text, textColor, playerId, quarterTurns)),
+                                                                         ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:187:80: Error: Undefined name 'quarterTurns'.
+                 child: Center(child: _buildTextContent(text, textColor, playerId, quarterTurns)),
+                                                                                   ^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:193:18: Error: Undefined name 'backgroundColor'.
+              color: backgroundColor,
+                     ^^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:194:50: Error: Undefined name 'text'.
+              child: Center(child: _buildTextContent(text, textColor, playerId, quarterTurns)),
+                                                     ^^^^
+    lib/features/game/presentation/widgets/player_area.dart:194:56: Error: Undefined name 'textColor'.
+              child: Center(child: _buildTextContent(text, textColor, playerId, quarterTurns)),
+                                                           ^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:194:67: Error: Undefined name 'playerId'.
+              child: Center(child: _buildTextContent(text, textColor, playerId, quarterTurns)),
+                                                                      ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:194:77: Error: Undefined name 'quarterTurns'.
+              child: Center(child: _buildTextContent(text, textColor, playerId, quarterTurns)),
+                                                                                ^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:201:25: Error: Undefined name 'state'.
+            onPointerDown: (state.mode == GameMode.precision || state.mode == GameMode.brain) && state.status == GameStatus.action
+                            ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:201:61: Error: Undefined name 'state'.
+            onPointerDown: (state.mode == GameMode.precision || state.mode == GameMode.brain) && state.status == GameStatus.action
+                                                                ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:201:94: Error: Undefined name 'state'.
+            onPointerDown: (state.mode == GameMode.precision || state.mode == GameMode.brain) && state.status == GameStatus.action
+                                                                                          ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:204:32: Error: Method invocation is not a constant expression.
+                    HapticFeedback.selectionClick();
+                                   ^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:205:44: Error: Undefined name 'playerId'.
+                    notifier.handleInteraction(playerId, isDown: true);
+                                               ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:205:17: Error: Undefined name 'notifier'.
+                    notifier.handleInteraction(playerId, isDown: true);
+                    ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:205:26: Error: Method invocation is not a constant expression.
+                    notifier.handleInteraction(playerId, isDown: true);
+                             ^^^^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:203:15: Error: Not a constant expression.
+                : (_) {
+                  ^^^
+    lib/features/game/presentation/widgets/player_area.dart:207:23: Error: Undefined name 'state'.
+            onPointerUp: (state.mode == GameMode.precision || state.mode == GameMode.brain) && state.status == GameStatus.action
+                          ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:207:59: Error: Undefined name 'state'.
+            onPointerUp: (state.mode == GameMode.precision || state.mode == GameMode.brain) && state.status == GameStatus.action
+                                                              ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:207:92: Error: Undefined name 'state'.
+            onPointerUp: (state.mode == GameMode.precision || state.mode == GameMode.brain) && state.status == GameStatus.action
+                                                                                          ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:210:44: Error: Undefined name 'playerId'.
+                    notifier.handleInteraction(playerId, isDown: false);
+                                               ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:210:17: Error: Undefined name 'notifier'.
+                    notifier.handleInteraction(playerId, isDown: false);
+                    ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:210:26: Error: Method invocation is not a constant expression.
+                    notifier.handleInteraction(playerId, isDown: false);
+                             ^^^^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:209:15: Error: Not a constant expression.
+                : (_) {
+                  ^^^
+    lib/features/game/presentation/widgets/player_area.dart:214:28: Error: Constant expression expected.
+    Try inserting 'const'.
+                border: Border.all(color: Colors.black, width: 2),
+                               ^^^
+    lib/features/game/presentation/widgets/player_area.dart:214:28: Error: Cannot invoke a non-'const' factory where a const expression is expected.
+    Try using a constructor or factory that is 'const'.
+                border: Border.all(color: Colors.black, width: 2),
+                               ^^^
+    lib/features/game/presentation/widgets/player_area.dart:213:23: Error: Constant expression expected.
+    Try inserting 'const'.
+              decoration: BoxDecoration(
+                          ^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:219:20: Error: Undefined name 'state'.
+                   if (state.playerCount > 1) 
+                       ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:224:36: Error: Undefined name 'quarterTurns'.
+                         quarterTurns: quarterTurns,
+                                       ^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:226:27: Error: Undefined name 'playerId'.
+                           "P$playerId",
+                              ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:228:46: Error: Method invocation is not a constant expression.
+                             color: Colors.white.withOpacity(0.3),
+                                                 ^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:227:31: Error: Constant expression expected.
+    Try inserting 'const'.
+                           style: TextStyle(
+                                  ^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:225:29: Error: Constant expression expected.
+    Try inserting 'const'.
+                         child: Text(
+                                ^^^^
+    lib/features/game/presentation/widgets/player_area.dart:223:27: Error: Constant expression expected.
+    Try inserting 'const'.
+                       child: RotatedBox(
+                              ^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:220:18: Error: Constant expression expected.
+    Try inserting 'const'.
+                     Positioned(
+                     ^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:238:33: Error: Undefined name 'quarterTurns'.
+                      quarterTurns: quarterTurns,
+                                    ^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:239:26: Error: Not a constant expression.
+                      child: content,
+                             ^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:237:16: Error: Constant expression expected.
+    Try inserting 'const'.
+                   RotatedBox(
+                   ^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:217:23: Error: Constant expression expected.
+    Try inserting 'const'.
+                children: [
+                          ^
+    lib/features/game/presentation/widgets/player_area.dart:216:18: Error: Constant expression expected.
+    Try inserting 'const'.
+              child: Stack(
+                     ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:212:16: Error: Constant expression expected.
+    Try inserting 'const'.
+            child: Container(
+                   ^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:212:16: Error: Cannot invoke a non-'const' constructor where a const expression is expected.
+    Try using a constructor or factory that is 'const'.
+            child: Container(
+                   ^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:199:14: Error: Constant expression expected.
+    Try inserting 'const'.
+          child: Listener(
+                 ^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:252:17: Error: Undefined name 'state'.
+                if (state.playerCount == 1 && state.highScoreMs != null && state.status == GameStatus.idle)
+                    ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:252:43: Error: Undefined name 'state'.
+                if (state.playerCount == 1 && state.highScoreMs != null && state.status == GameStatus.idle)
+                                              ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:252:72: Error: Undefined name 'state'.
+                if (state.playerCount == 1 && state.highScoreMs != null && state.status == GameStatus.idle)
+                                                                           ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:256:27: Error: Undefined name 'state'.
+                    "BEST: ${(state.highScoreMs! / 1000).toStringAsFixed(3)}s",
+                              ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:260:17: Error: Undefined name 'state'.
+                if (state.mode == GameMode.scoreboard)
+                    ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:264:27: Error: Undefined name 'state'.
+                    "SCORE: ${state.scores[playerId] ?? 0}",
+                              ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:272:15: Error: Undefined name 'state'.
+                : state.status == GameStatus.countdown
+                  ^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:31:21: Error: The type 'GameStatus' is not exhaustively matched by the switch cases since it doesn't match 'GameStatus.matchOver'.
+     - 'GameStatus' is from 'package:reflex_war/features/game/presentation/providers/game_provider.dart' ('lib/features/game/presentation/providers/game_provider.dart').
+    Try adding a default case or cases that match 'GameStatus.matchOver'.
+          switch (state.status) {
+                        ^
+    Target kernel_snapshot_program failed: Exception
+    Failed to package /Users/berkharmandar/Desktop/BerkProjects/ReflexWar.
+    Command PhaseScriptExecution failed with a nonzero exit code
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'GoogleUserMessagingPlatform' from project 'Pods')
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Google-Mobile-Ads-SDK' from project 'Pods')
+    warning: Run script build phase '[CP] Embed Pods Frameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+    warning: Run script build phase '[CP] Copy Pods Resources' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+    note: Run script build phase 'Thin Binary' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+    note: Run script build phase 'Run Script' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+
+Encountered error while building for simulator.

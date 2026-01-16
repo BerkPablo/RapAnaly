@@ -1,0 +1,23 @@
+  error • Can't define a const constructor for a class with non-final fields • lib/features/game/presentation/providers/game_provider.dart:71:9 • const_constructor_with_non_final_field
+  error • The name 'matchTimeRemaining' is already defined • lib/features/game/presentation/providers/game_provider.dart:172:9 • duplicate_definition
+  error • Variables must be declared using the keywords 'const', 'final', 'var' or a type name • lib/features/game/presentation/providers/game_provider.dart:172:9 • missing_const_final_var_or_type
+  error • The name 'targetAlignments' is already defined • lib/features/game/presentation/providers/game_provider.dart:173:9 • duplicate_definition
+  error • The name 'currentQuestion' is already defined • lib/features/game/presentation/providers/game_provider.dart:174:9 • duplicate_definition
+  error • Expected to find ';' • lib/features/game/presentation/providers/game_provider.dart:175:9 • expected_token
+  error • The name 'tapCounts' is already defined • lib/features/game/presentation/providers/game_provider.dart:175:9 • duplicate_definition
+  error • Expected a class member • lib/features/game/presentation/providers/game_provider.dart:176:7 • expected_class_member
+  error • Expected a class member • lib/features/game/presentation/providers/game_provider.dart:176:8 • expected_class_member
+  error • 1 positional argument expected by '_safeVibrate', but 0 found • lib/features/game/presentation/providers/game_provider.dart:880:22 • not_enough_positional_arguments
+  error • 1 positional argument expected by '_safeVibrate', but 0 found • lib/features/game/presentation/providers/game_provider.dart:907:21 • not_enough_positional_arguments
+  error • Expected to find ';' • lib/features/game/presentation/widgets/player_area.dart:245:9 • expected_token
+  error • Expected an identifier • lib/features/game/presentation/widgets/player_area.dart:245:11 • missing_identifier
+  error • Unexpected text 'else' • lib/features/game/presentation/widgets/player_area.dart:245:11 • unexpected_token
+  error • Undefined name 'state' • lib/features/game/presentation/widgets/player_area.dart:399:40 • undefined_identifier
+  error • Undefined name 'state' • lib/features/game/presentation/widgets/player_area.dart:400:34 • undefined_identifier
+  error • Undefined name 'state' • lib/features/game/presentation/widgets/player_area.dart:401:43 • undefined_identifier
+  error • Undefined name 'state' • lib/features/game/presentation/widgets/player_area.dart:423:29 • undefined_identifier
+  error • Undefined name 'state' • lib/features/game/presentation/widgets/player_area.dart:425:41 • undefined_identifier
+  error • Undefined name 'state' • lib/features/game/presentation/widgets/player_area.dart:426:42 • undefined_identifier
+  error • Undefined name 'state' • lib/features/game/presentation/widgets/player_area.dart:432:33 • undefined_identifier
+  error • Undefined name 'state' • lib/features/game/presentation/widgets/player_area.dart:436:33 • undefined_identifier
+  error • Expected a method, getter, setter or operator declaration • lib/features/game/presentation/widgets/player_area.dart:471:1 • expected_executable

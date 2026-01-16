@@ -1,0 +1,53 @@
+Building com.berkharmandar.reflexWar for simulator (ios)...
+Running Xcode build...                                          
+Xcode build done.                                            7.8s
+Failed to build iOS app
+Error output from Xcode build:
+↳
+    ** BUILD FAILED **
+
+
+Xcode's output:
+↳
+    Writing result bundle at path:
+    	/var/folders/06/44xzwd3x52s6myr5vt6f5fwr0000gq/T/flutter_tools.yOSPTg/flutter_ios_build_temp_dirLDJXvZ/temporary_xcresult_bundle
+
+    lib/features/game/presentation/providers/game_provider.dart:51:18: Error: Type 'Alignment' not found.
+      final Map<int, Alignment> targetAlignments; // Precision Mode targets
+                     ^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:99:14: Error: Type 'Alignment' not found.
+        Map<int, Alignment>? targetAlignments,
+                 ^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:68:29: Error: A value of type 'Map<dynamic, dynamic>' can't be assigned to a variable of type 'Map<int, invalid-type>'.
+     - 'Map' is from 'dart:core'.
+        this.targetAlignments = const {},
+                                ^
+    lib/features/game/presentation/providers/game_provider.dart:51:18: Error: 'Alignment' isn't a type.
+      final Map<int, Alignment> targetAlignments; // Precision Mode targets
+                     ^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:99:14: Error: 'Alignment' isn't a type.
+        Map<int, Alignment>? targetAlignments,
+                 ^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:335:14: Error: 'Alignment' isn't a type.
+        Map<int, Alignment> newTargets = {};
+                 ^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:335:38: Error: A value of type 'Map<dynamic, dynamic>' can't be assigned to a variable of type 'Map<int, invalid-type>'.
+     - 'Map' is from 'dart:core'.
+        Map<int, Alignment> newTargets = {};
+                                         ^
+    lib/features/game/presentation/providers/game_provider.dart:345:27: Error: The method 'Alignment' isn't defined for the type 'GameNotifier'.
+     - 'GameNotifier' is from 'package:reflex_war/features/game/presentation/providers/game_provider.dart' ('lib/features/game/presentation/providers/game_provider.dart').
+    Try correcting the name to the name of an existing method, or defining a method named 'Alignment'.
+              newTargets[i] = Alignment(x, y);
+                              ^^^^^^^^^
+    Target kernel_snapshot_program failed: Exception
+    Failed to package /Users/berkharmandar/Desktop/BerkProjects/ReflexWar.
+    Command PhaseScriptExecution failed with a nonzero exit code
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'GoogleUserMessagingPlatform' from project 'Pods')
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Google-Mobile-Ads-SDK' from project 'Pods')
+    warning: Run script build phase '[CP] Copy Pods Resources' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+    note: Run script build phase 'Thin Binary' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+    note: Run script build phase 'Run Script' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+    warning: Run script build phase '[CP] Embed Pods Frameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+
+Encountered error while building for simulator.

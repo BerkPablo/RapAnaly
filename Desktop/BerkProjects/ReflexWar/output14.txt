@@ -1,0 +1,106 @@
+Building com.berkharmandar.reflexWar for simulator (ios)...
+Running Xcode build...                                          
+Xcode build done.                                            8.5s
+Failed to build iOS app
+Error output from Xcode build:
+↳
+    ** BUILD FAILED **
+
+
+Xcode's output:
+↳
+    Writing result bundle at path:
+    	/var/folders/06/44xzwd3x52s6myr5vt6f5fwr0000gq/T/flutter_tools.HX1jBK/flutter_ios_build_temp_dir5FEMXD/temporary_xcresult_bundle
+
+    lib/features/menu/presentation/screens/menu_screen.dart:458:22: Error: Can't find '}' to match '{'.
+           switch (mode) {
+                         ^
+    lib/features/menu/presentation/screens/menu_screen.dart:18:7: Error: The non-abstract class '_MenuScreenState' is missing implementations for these members:
+     - State.build
+    Try to either
+     - provide an implementation,
+     - inherit an implementation from a superclass or mixin,
+     - mark the class as abstract, or
+     - provide a 'noSuchMethod' implementation.
+    class _MenuScreenState extends State<MenuScreen> with TickerProviderStateMixin {
+          ^^^^^^^^^^^^^^^^
+    /opt/homebrew/share/flutter/packages/flutter/lib/src/widgets/framework.dart:1461:10: Context: 'State.build' is defined here.
+      Widget build(BuildContext context);
+             ^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:157:18: Error: Local variable '_buildGlitchTitle' can't be referenced before it is declared.
+                     _buildGlitchTitle(),
+                     ^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:226:10: Context: This is the declaration of the variable '_buildGlitchTitle'.
+      Widget _buildGlitchTitle() {
+             ^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:192:33: Error: Local variable '_buildModeCard' can't be referenced before it is declared.
+                             child: _buildModeCard(_modes[index], index == _currentPage),
+                                    ^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:287:10: Context: This is the declaration of the variable '_buildModeCard'.
+      Widget _buildModeCard(GameMode mode, bool isSelected) {
+             ^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:203:113: Error: Local variable '_buildPlayerSelector' can't be referenced before it is declared.
+                       child: Center(child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 500), child: _buildPlayerSelector())),
+                                                                                          ^^^^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:349:10: Context: This is the declaration of the variable '_buildPlayerSelector'.
+      Widget _buildPlayerSelector() {
+             ^^^^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:209:18: Error: Local variable '_buildStartButton' can't be referenced before it is declared.
+                     _buildStartButton(),
+                     ^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:405:14: Context: This is the declaration of the variable '_buildStartButton'.
+          Widget _buildStartButton() {
+                 ^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:288:26: Error: Local variable '_getModeLabel' can't be referenced before it is declared.
+        final String label = _getModeLabel(mode);
+                             ^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:446:10: Context: This is the declaration of the variable '_getModeLabel'.
+      String _getModeLabel(GameMode mode) {
+             ^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:289:25: Error: Local variable '_getModeDescription' can't be referenced before it is declared.
+        final String desc = _getModeDescription(mode);
+                            ^^^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:457:10: Context: This is the declaration of the variable '_getModeDescription'.
+      String _getModeDescription(GameMode mode) {
+             ^^^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:157:18: Error: The method '_buildGlitchTitle' isn't defined for the type '_MenuScreenState'.
+     - '_MenuScreenState' is from 'package:reflex_war/features/menu/presentation/screens/menu_screen.dart' ('lib/features/menu/presentation/screens/menu_screen.dart').
+    Try correcting the name to the name of an existing method, or defining a method named '_buildGlitchTitle'.
+                     _buildGlitchTitle(),
+                     ^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:192:33: Error: The method '_buildModeCard' isn't defined for the type '_MenuScreenState'.
+     - '_MenuScreenState' is from 'package:reflex_war/features/menu/presentation/screens/menu_screen.dart' ('lib/features/menu/presentation/screens/menu_screen.dart').
+    Try correcting the name to the name of an existing method, or defining a method named '_buildModeCard'.
+                             child: _buildModeCard(_modes[index], index == _currentPage),
+                                    ^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:203:113: Error: The method '_buildPlayerSelector' isn't defined for the type '_MenuScreenState'.
+     - '_MenuScreenState' is from 'package:reflex_war/features/menu/presentation/screens/menu_screen.dart' ('lib/features/menu/presentation/screens/menu_screen.dart').
+    Try correcting the name to the name of an existing method, or defining a method named '_buildPlayerSelector'.
+                       child: Center(child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 500), child: _buildPlayerSelector())),
+                                                                                          ^^^^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:209:18: Error: The method '_buildStartButton' isn't defined for the type '_MenuScreenState'.
+     - '_MenuScreenState' is from 'package:reflex_war/features/menu/presentation/screens/menu_screen.dart' ('lib/features/menu/presentation/screens/menu_screen.dart').
+    Try correcting the name to the name of an existing method, or defining a method named '_buildStartButton'.
+                     _buildStartButton(),
+                     ^^^^^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:288:26: Error: The method '_getModeLabel' isn't defined for the type '_MenuScreenState'.
+     - '_MenuScreenState' is from 'package:reflex_war/features/menu/presentation/screens/menu_screen.dart' ('lib/features/menu/presentation/screens/menu_screen.dart').
+    Try correcting the name to the name of an existing method, or defining a method named '_getModeLabel'.
+        final String label = _getModeLabel(mode);
+                             ^^^^^^^^^^^^^
+    lib/features/menu/presentation/screens/menu_screen.dart:289:25: Error: The method '_getModeDescription' isn't defined for the type '_MenuScreenState'.
+     - '_MenuScreenState' is from 'package:reflex_war/features/menu/presentation/screens/menu_screen.dart' ('lib/features/menu/presentation/screens/menu_screen.dart').
+    Try correcting the name to the name of an existing method, or defining a method named '_getModeDescription'.
+        final String desc = _getModeDescription(mode);
+                            ^^^^^^^^^^^^^^^^^^^
+    Target kernel_snapshot_program failed: Exception
+    Failed to package /Users/berkharmandar/Desktop/BerkProjects/ReflexWar.
+    Command PhaseScriptExecution failed with a nonzero exit code
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'GoogleUserMessagingPlatform' from project 'Pods')
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Google-Mobile-Ads-SDK' from project 'Pods')
+    warning: Run script build phase '[CP] Embed Pods Frameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+    warning: Run script build phase '[CP] Copy Pods Resources' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+    note: Run script build phase 'Run Script' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+    note: Run script build phase 'Thin Binary' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+
+Encountered error while building for simulator.

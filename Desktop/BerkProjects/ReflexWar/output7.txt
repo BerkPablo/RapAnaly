@@ -1,0 +1,409 @@
+Building com.berkharmandar.reflexWar for simulator (ios)...
+Running Xcode build...                                          
+Xcode build done.                                            6.3s
+Failed to build iOS app
+Error output from Xcode build:
+↳
+    ** BUILD FAILED **
+
+
+Xcode's output:
+↳
+    Writing result bundle at path:
+    	/var/folders/06/44xzwd3x52s6myr5vt6f5fwr0000gq/T/flutter_tools.kpBZc3/flutter_ios_build_temp_dirAvJzpI/temporary_xcresult_bundle
+
+    lib/features/game/presentation/providers/game_provider.dart:629:1: Error: Expected a declaration, but got '}'.
+    }
+    ^
+    lib/features/game/presentation/providers/game_provider.dart:237:5: Error: Undefined name '_matchTimer'.
+        _matchTimer?.cancel();
+        ^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:238:13: Error: Undefined name 'state'.
+        state = state.copyWith(matchTimeRemaining: const Duration(seconds: 60)); // Reset to 60s
+                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:238:5: Error: Setter not found: 'state'.
+        state = state.copyWith(matchTimeRemaining: const Duration(seconds: 60)); // Reset to 60s
+        ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:241:12: Error: Undefined name 'state'.
+           if (state.status == GameStatus.matchOver) {
+               ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:246:24: Error: Undefined name 'state'.
+           final newTime = state.matchTimeRemaining - const Duration(seconds: 1);
+                           ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:250:19: Error: Undefined name 'state'.
+              state = state.copyWith(matchTimeRemaining: Duration.zero);
+                      ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:250:11: Error: Setter not found: 'state'.
+              state = state.copyWith(matchTimeRemaining: Duration.zero);
+              ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:253:19: Error: Undefined name 'state'.
+              state = state.copyWith(matchTimeRemaining: newTime);
+                      ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:253:11: Error: Setter not found: 'state'.
+              state = state.copyWith(matchTimeRemaining: newTime);
+              ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:240:5: Error: Setter not found: '_matchTimer'.
+        _matchTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        ^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:262:10: Error: Undefined name 'state'.
+         if (state.mode == GameMode.tapWar) {
+             ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:267:9: Error: Undefined name 'state'.
+            state.tapCounts.forEach((player, count) {
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:284:9: Error: Undefined name 'state'.
+            state.scores.forEach((player, score) {
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:297:6: Error: Undefined name '_timer'.
+         _timer?.cancel(); 
+         ^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:298:6: Error: Undefined name '_fakeOutTimer'.
+         _fakeOutTimer?.cancel();
+         ^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:300:14: Error: Undefined name 'state'.
+         state = state.copyWith(
+                 ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:300:6: Error: Setter not found: 'state'.
+         state = state.copyWith(
+         ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:320:14: Error: Undefined name 'state'.
+             if (state.status == GameStatus.waiting) {
+                 ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:319:8: Error: Setter not found: '_fakeOutTimer'.
+           _fakeOutTimer = Timer(Duration(milliseconds: fakeDelay), () {
+           ^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:328:13: Error: Undefined name 'state'.
+        state = state.copyWith(isYellow: true);
+                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:328:5: Error: Setter not found: 'state'.
+        state = state.copyWith(isYellow: true);
+        ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:333:5: Error: Undefined name '_ambienceTimer'.
+        _ambienceTimer?.cancel(); 
+        ^^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:334:11: Error: Undefined name '_ambiencePlayer'.
+        await _ambiencePlayer.stop(); 
+              ^^^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:336:9: Error: Undefined name 'state'.
+        if (state.status != GameStatus.waiting) return;
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:338:5: Error: Setter not found: '_stopwatch'.
+        _stopwatch = Stopwatch()..start();
+        ^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:344:9: Error: Undefined name 'state'.
+        if (state.mode == GameMode.precision) {
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:347:29: Error: Undefined name 'state'.
+           for (int i = 1; i <= state.playerCount; i++) {
+                                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:353:16: Error: Undefined name 'state'.
+        } else if (state.mode == GameMode.brain) {
+                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:365:13: Error: Undefined name 'state'.
+        state = state.copyWith(
+                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:365:5: Error: Setter not found: 'state'.
+        state = state.copyWith(
+        ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:372:10: Error: Undefined name 'state'.
+        if ((state.playerCount > 1 && state.mode != GameMode.scoreboard) || state.mode == GameMode.tapWar) {
+             ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:372:35: Error: Undefined name 'state'.
+        if ((state.playerCount > 1 && state.mode != GameMode.scoreboard) || state.mode == GameMode.tapWar) {
+                                      ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:372:73: Error: Undefined name 'state'.
+        if ((state.playerCount > 1 && state.mode != GameMode.scoreboard) || state.mode == GameMode.tapWar) {
+                                                                            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:380:9: Error: Undefined name 'state'.
+        if (state.disqualified.contains(playerId)) return;
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:381:9: Error: Undefined name 'state'.
+        if (state.status == GameStatus.matchOver || state.status == GameStatus.result) return;
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:381:49: Error: Undefined name 'state'.
+        if (state.status == GameStatus.matchOver || state.status == GameStatus.result) return;
+                                                    ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:382:9: Error: Undefined name 'state'.
+        if (state.status == GameStatus.instruction) return; 
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:385:9: Error: Undefined name 'state'.
+        if (state.mode == GameMode.brain && state.status == GameStatus.action) return;
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:385:41: Error: Undefined name 'state'.
+        if (state.mode == GameMode.brain && state.status == GameStatus.action) return;
+                                            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:391:9: Error: Undefined name 'state'.
+        if (state.playerCount > 1) {
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:401:10: Error: Undefined name 'state'.
+         if (state.status != GameStatus.action) return;
+             ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:402:10: Error: Undefined name 'state'.
+         if (state.disqualified.contains(playerId)) return;
+             ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:404:10: Error: Undefined name 'state'.
+         if (state.currentQuestion != null && chosenAnswer == state.currentQuestion!.answer) {
+             ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:404:59: Error: Undefined name 'state'.
+         if (state.currentQuestion != null && chosenAnswer == state.currentQuestion!.answer) {
+                                                              ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:412:10: Error: Undefined name 'state'.
+         if (state.status == GameStatus.action && !state.disqualified.contains(playerId)) {
+             ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:412:48: Error: Undefined name 'state'.
+         if (state.status == GameStatus.action && !state.disqualified.contains(playerId)) {
+                                                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:418:9: Error: Undefined name 'state'.
+        if (state.status == GameStatus.idle) {
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:422:13: Error: Undefined name 'state'.
+            if (state.readyPlayers.contains(playerId)) {
+                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:424:36: Error: Undefined name 'state'.
+              newReady = Set<int>.from(state.readyPlayers)..remove(playerId);
+                                       ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:427:36: Error: Undefined name 'state'.
+              newReady = Set<int>.from(state.readyPlayers)..add(playerId);
+                                       ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:430:17: Error: Undefined name 'state'.
+            state = state.copyWith(readyPlayers: newReady);
+                    ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:430:9: Error: Setter not found: 'state'.
+            state = state.copyWith(readyPlayers: newReady);
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:433:32: Error: Undefined name 'state'.
+            if (newReady.length == state.playerCount) {
+                                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:435:18: Error: Undefined name 'mounted'.
+                 if (mounted) _startCountdown();
+                     ^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:435:27: Error: Method not found: '_startCountdown'.
+                 if (mounted) _startCountdown();
+                              ^^^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:440:16: Error: Undefined name 'state'.
+        } else if (state.status == GameStatus.waiting) {
+                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:449:17: Error: Undefined name 'state'.
+         } else if (state.status == GameStatus.countdown) {
+                    ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:453:16: Error: Undefined name 'state'.
+        } else if (state.status == GameStatus.action) {
+                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:454:11: Error: Undefined name 'state'.
+          if (state.mode == GameMode.tapWar) {
+              ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:457:29: Error: Undefined name 'state'.
+                final current = state.tapCounts[playerId] ?? 0;
+                                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:459:31: Error: Undefined name 'state'.
+                   tapCounts: {...state.tapCounts, playerId: current + 1},
+                                  ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:458:21: Error: Undefined name 'state'.
+                state = state.copyWith(
+                        ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:458:13: Error: Setter not found: 'state'.
+                state = state.copyWith(
+                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:478:9: Error: Undefined name 'state'.
+        if (state.status == GameStatus.idle) {
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:479:7: Error: Method not found: '_startCountdown'.
+          _startCountdown();
+          ^^^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:480:16: Error: Undefined name 'state'.
+        } else if (state.status == GameStatus.waiting) {
+                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:482:16: Error: Undefined name 'state'.
+        } else if (state.status == GameStatus.action) {
+                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:483:12: Error: Undefined name 'state'.
+           if (state.mode == GameMode.tapWar) {
+               ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:485:27: Error: Undefined name 'state'.
+              final current = state.tapCounts[playerId] ?? 0;
+                              ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:486:49: Error: Undefined name 'state'.
+              state = state.copyWith(tapCounts: {...state.tapCounts, playerId: current + 1});
+                                                    ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:486:19: Error: Undefined name 'state'.
+              state = state.copyWith(tapCounts: {...state.tapCounts, playerId: current + 1});
+                      ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:486:11: Error: Setter not found: 'state'.
+              state = state.copyWith(tapCounts: {...state.tapCounts, playerId: current + 1});
+              ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:496:5: Error: Undefined name '_timer'.
+        _timer?.cancel(); // Cancel main start timer
+        ^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:497:5: Error: Undefined name '_fakeOutTimer'.
+        _fakeOutTimer?.cancel(); // Cancel fake out timer
+        ^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:498:5: Error: Undefined name '_countdownTimer'.
+        _countdownTimer?.cancel(); // Cancel countdown if it was running
+        ^^^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:502:43: Error: Undefined name 'state'.
+        final newDisqualified = Set<int>.from(state.disqualified)..add(playerId);
+                                              ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:505:9: Error: Undefined name 'state'.
+        if (state.mode == GameMode.scoreboard && state.playerCount > 1) {
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:505:46: Error: Undefined name 'state'.
+        if (state.mode == GameMode.scoreboard && state.playerCount > 1) {
+                                                 ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:506:31: Error: Undefined name 'state'.
+             final currentScore = state.scores[playerId] ?? 0;
+                                  ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:507:45: Error: Undefined name 'state'.
+             state = state.copyWith(scores: {...state.scores, playerId: currentScore - 1});
+                                                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:507:18: Error: Undefined name 'state'.
+             state = state.copyWith(scores: {...state.scores, playerId: currentScore - 1});
+                     ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:507:10: Error: Setter not found: 'state'.
+             state = state.copyWith(scores: {...state.scores, playerId: currentScore - 1});
+             ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:510:13: Error: Undefined name 'state'.
+        state = state.copyWith(
+                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:510:5: Error: Setter not found: 'state'.
+        state = state.copyWith(
+        ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:521:11: Error: Undefined name 'mounted'.
+          if (mounted) {
+              ^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:522:10: Error: Method not found: 'startGame'.
+             startGame(); // LOOP: Go straight to Waiting phase, skipping Idle
+             ^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:528:5: Error: Undefined name '_stopwatch'.
+        _stopwatch?.stop();
+        ^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:529:22: Error: Undefined name '_stopwatch'.
+        final reaction = _stopwatch?.elapsed;
+                         ^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:531:13: Error: Undefined name 'state'.
+        state = state.copyWith(
+                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:531:5: Error: Setter not found: 'state'.
+        state = state.copyWith(
+        ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:541:9: Error: Undefined name 'state'.
+        if (state.mode == GameMode.scoreboard && state.playerCount > 1) {
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:541:46: Error: Undefined name 'state'.
+        if (state.mode == GameMode.scoreboard && state.playerCount > 1) {
+                                                 ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:542:29: Error: Undefined name 'state'.
+           final currentScore = state.scores[playerId] ?? 0;
+                                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:543:45: Error: Undefined name 'state'.
+           final newScores = Map<int, int>.from(state.scores);
+                                                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:545:16: Error: Undefined name 'state'.
+           state = state.copyWith(scores: newScores);
+                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:545:8: Error: Setter not found: 'state'.
+           state = state.copyWith(scores: newScores);
+           ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:546:16: Error: Undefined name 'state'.
+        } else if (state.playerCount == 1 && reaction != null) {
+                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:552:11: Error: Undefined name 'mounted'.
+          if (mounted) {
+              ^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:553:16: Error: Undefined name 'state'.
+               if (state.mode == GameMode.scoreboard) {
+                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:555:30: Error: Undefined name 'state'.
+                  final winner = state.scores.entries.where((e) => e.value >= 5).firstOrNull;
+                                 ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:557:28: Error: Undefined name 'state'.
+                       state = state.copyWith(status: GameStatus.matchOver, winner: winner.key);
+                               ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:557:20: Error: Setter not found: 'state'.
+                       state = state.copyWith(status: GameStatus.matchOver, winner: winner.key);
+                       ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:563:19: Error: Method not found: 'startGame'.
+                      startGame(); // LOOP: Next Point
+                      ^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:568:15: Error: Method not found: 'startGame'.
+                  startGame(); // LOOP: Play Again
+                  ^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:577:9: Error: Undefined name 'state'.
+        if (state.highScoreMs == null || currentMs < state.highScoreMs!) {
+            ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:577:50: Error: Undefined name 'state'.
+        if (state.highScoreMs == null || currentMs < state.highScoreMs!) {
+                                                     ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:578:14: Error: Undefined name '_localStorage'.
+           await _localStorage.saveHighScore(currentMs);
+                 ^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:579:16: Error: Undefined name 'state'.
+           state = state.copyWith(highScoreMs: currentMs);
+                   ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:579:8: Error: Setter not found: 'state'.
+           state = state.copyWith(highScoreMs: currentMs);
+           ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:588:13: Error: Undefined name 'state'.
+        state = state.copyWith(
+                ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:588:5: Error: Setter not found: 'state'.
+        state = state.copyWith(
+        ^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:596:5: Error: Undefined name '_ambienceTimer'.
+        _ambienceTimer?.cancel();
+        ^^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:597:5: Error: Undefined name '_ambiencePlayer'.
+        _ambiencePlayer.stop(); 
+        ^^^^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:603:11: Error: Undefined name '_audioPlayer'.
+        await _audioPlayer.stop(); 
+              ^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:606:11: Error: Undefined name '_audioPlayer'.
+        await _audioPlayer.setVolume(1.0);
+              ^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:607:11: Error: Undefined name '_audioPlayer'.
+        await _audioPlayer.setPlaybackRate(1.0); // Reset in case UI changed it
+              ^^^^^^^^^^^^
+    lib/features/game/presentation/providers/game_provider.dart:612:13: Error: Undefined name '_audioPlayer'.
+          await _audioPlayer.play(AssetSource('sounds/$fileName'));
+                ^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:116:42: Error: The method 'handlePrecisionMiss' isn't defined for the type 'GameNotifier'.
+     - 'GameNotifier' is from 'package:reflex_war/features/game/presentation/providers/game_provider.dart' ('lib/features/game/presentation/providers/game_provider.dart').
+    Try correcting the name to the name of an existing method, or defining a method named 'handlePrecisionMiss'.
+                       onTap: () => notifier.handlePrecisionMiss(playerId),
+                                             ^^^^^^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:124:53: Error: The method 'handleInteraction' isn't defined for the type 'GameNotifier'.
+     - 'GameNotifier' is from 'package:reflex_war/features/game/presentation/providers/game_provider.dart' ('lib/features/game/presentation/providers/game_provider.dart').
+    Try correcting the name to the name of an existing method, or defining a method named 'handleInteraction'.
+                             onTapDown: (_) => notifier.handleInteraction(playerId, isDown: true),
+                                                        ^^^^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:179:57: Error: The method 'handleBrainChoice' isn't defined for the type 'GameNotifier'.
+     - 'GameNotifier' is from 'package:reflex_war/features/game/presentation/providers/game_provider.dart' ('lib/features/game/presentation/providers/game_provider.dart').
+    Try correcting the name to the name of an existing method, or defining a method named 'handleBrainChoice'.
+                                      onTap: () => notifier.handleBrainChoice(playerId, isLeft ? val1 : val2),
+                                                            ^^^^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:193:57: Error: The method 'handleBrainChoice' isn't defined for the type 'GameNotifier'.
+     - 'GameNotifier' is from 'package:reflex_war/features/game/presentation/providers/game_provider.dart' ('lib/features/game/presentation/providers/game_provider.dart').
+    Try correcting the name to the name of an existing method, or defining a method named 'handleBrainChoice'.
+                                      onTap: () => notifier.handleBrainChoice(playerId, isLeft ? val2 : val1),
+                                                            ^^^^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:239:26: Error: The method 'handleInteraction' isn't defined for the type 'GameNotifier'.
+     - 'GameNotifier' is from 'package:reflex_war/features/game/presentation/providers/game_provider.dart' ('lib/features/game/presentation/providers/game_provider.dart').
+    Try correcting the name to the name of an existing method, or defining a method named 'handleInteraction'.
+                    notifier.handleInteraction(playerId, isDown: true);
+                             ^^^^^^^^^^^^^^^^^
+    lib/features/game/presentation/widgets/player_area.dart:244:26: Error: The method 'handleInteraction' isn't defined for the type 'GameNotifier'.
+     - 'GameNotifier' is from 'package:reflex_war/features/game/presentation/providers/game_provider.dart' ('lib/features/game/presentation/providers/game_provider.dart').
+    Try correcting the name to the name of an existing method, or defining a method named 'handleInteraction'.
+                    notifier.handleInteraction(playerId, isDown: false);
+                             ^^^^^^^^^^^^^^^^^
+    Target kernel_snapshot_program failed: Exception
+    Failed to package /Users/berkharmandar/Desktop/BerkProjects/ReflexWar.
+    Command PhaseScriptExecution failed with a nonzero exit code
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'GoogleUserMessagingPlatform' from project 'Pods')
+    warning: Run script build phase '[CP] Copy XCFrameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Google-Mobile-Ads-SDK' from project 'Pods')
+    warning: Run script build phase '[CP] Copy Pods Resources' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+    note: Run script build phase 'Run Script' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+    warning: Run script build phase '[CP] Embed Pods Frameworks' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'Runner' from project 'Runner')
+    note: Run script build phase 'Thin Binary' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'Runner' from project 'Runner')
+
+Encountered error while building for simulator.

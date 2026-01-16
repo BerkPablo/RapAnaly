@@ -1,0 +1,60 @@
+Analyzing ReflexWar...                                          
+
+   info • Use 'const' with the constructor to improve performance • lib/core/services/music_service.dart:21:16 • prefer_const_constructors
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/core/services/music_service.dart:30:18 • prefer_const_literals_to_create_immutables
+   info • Statements in an if should be enclosed in a block • lib/core/services/music_service.dart:48:23 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/core/services/music_service.dart:49:12 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/features/game/presentation/providers/game_provider.dart:398:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/features/game/presentation/providers/game_provider.dart:598:44 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/features/game/presentation/providers/game_provider.dart:603:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/features/game/presentation/providers/game_provider.dart:712:13 • curly_braces_in_flow_control_structures
+  error • Undefined name 'current' • lib/features/game/presentation/providers/game_provider.dart:753:65 • undefined_identifier
+warning • The left operand can't be null, so the right operand is never executed • lib/features/game/presentation/providers/game_provider.dart:897:18 • dead_null_aware_expression
+warning • Unused import: 'package:audioplayers/audioplayers.dart' • lib/features/game/presentation/screens/game_screen.dart:2:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/game/presentation/screens/game_screen.dart:94:39 • deprecated_member_use
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/game/presentation/screens/game_screen.dart:97:30 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/game/presentation/screens/game_screen.dart:98:22 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/game/presentation/screens/game_screen.dart:215:52 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/game/presentation/screens/game_screen.dart:278:34 • prefer_const_constructors
+   info • Use 'const' with the constructor to improve performance • lib/features/game/presentation/screens/game_screen.dart:278:54 • prefer_const_constructors
+warning • The value of the local variable 'minutes' isn't used • lib/features/game/presentation/screens/game_screen.dart:309:11 • unused_local_variable
+warning • The value of the local variable 'seconds' isn't used • lib/features/game/presentation/screens/game_screen.dart:310:11 • unused_local_variable
+warning • The value of the local variable 'swap' isn't used • lib/features/game/presentation/widgets/player_area.dart:150:22 • unused_local_variable
+warning • The value of the local variable 'display' isn't used • lib/features/game/presentation/widgets/player_area.dart:212:18 • unused_local_variable
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/game/presentation/widgets/player_area.dart:300:47 • deprecated_member_use
+   info • Use 'const' literals as arguments to constructors of '@immutable' classes • lib/features/game/presentation/widgets/player_area.dart:303:38 • prefer_const_literals_to_create_immutables
+   info • Use 'const' with the constructor to improve performance • lib/features/game/presentation/widgets/player_area.dart:304:30 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/game/presentation/widgets/player_area.dart:330:46 • deprecated_member_use
+   info • Use 'const' with the constructor to improve performance • lib/features/game/presentation/widgets/player_area.dart:355:25 • prefer_const_constructors
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/game/presentation/widgets/player_area.dart:417:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/game/presentation/widgets/player_area.dart:421:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/game/presentation/widgets/player_area.dart:436:75 • deprecated_member_use
+warning • The value of the field '_cursor' isn't used • lib/features/game/presentation/widgets/player_area.dart:520:32 • unused_field
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/game/presentation/widgets/player_area.dart:606:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/game/presentation/widgets/player_area.dart:612:53 • deprecated_member_use
+   info • Parameter 'key' could be a super parameter • lib/features/game/presentation/widgets/shake_widget.dart:28:9 • use_super_parameters
+warning • The declaration '_playClick' isn't referenced • lib/features/menu/presentation/screens/menu_screen.dart:118:16 • unused_element
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:307:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:311:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:324:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:328:54 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:353:24 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:359:46 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:373:28 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:376:46 • deprecated_member_use
+   info • Statements in an if should be enclosed in a block • lib/features/menu/presentation/screens/menu_screen.dart:410:17 • curly_braces_in_flow_control_structures
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:425:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:428:60 • deprecated_member_use
+   info • Use 'const' for final variables initialized to a constant value • lib/features/menu/presentation/screens/menu_screen.dart:448:5 • prefer_const_declarations
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:461:29 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:486:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:544:24 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:659:59 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/menu/presentation/screens/menu_screen.dart:661:35 • deprecated_member_use
+   info • 'activeColor' is deprecated and shouldn't be used. Use activeThumbColor instead. This feature was deprecated after v3.31.0-2.0.pre • lib/features/menu/presentation/screens/settings_screen.dart:67:17 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/splash/presentation/screens/splash_screen.dart:125:30 • deprecated_member_use
+warning • Unused import: 'features/menu/presentation/screens/menu_screen.dart' • lib/main.dart:6:8 • unused_import
+   info • The import of 'package:flutter/foundation.dart' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' • lib/services/ad_service.dart:2:8 • unnecessary_import
+warning • Unused import: 'package:flutter/material.dart' • test/widget_test.dart:1:8 • unused_import
+
+56 issues found. (ran in 3.7s)
