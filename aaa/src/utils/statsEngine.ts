@@ -1,4 +1,4 @@
-export type Device = "pro2" | "pro3";
+export type Device = "mlmds" | "pro2" | "pro3";
 export type MetricKey = "distance" | "exitVelo" | "launchAngle" | "exitDir";
 export type RawVal = number | "-" | null;
 
@@ -102,28 +102,30 @@ export type MetricResult = {
   thresholds: { good: string; moderate: string; bad: string };
 };
 
-export function computeMetric(rows: Row[], device: Device, metric: MetricKey): MetricResult {
+export function computeMetric(rows: Row[], testDevice: Device, refDevice: Device, metric: MetricKey): MetricResult {
   const count = rows.length;
   const { a, b, label, unit } = TH[metric];
 
   const diffs: number[] = [];
   const absDiffs: number[] = [];
 
-  let mlmdsValidCount = 0;
+  let refValidCount = 0;
   let good = 0,
     moderate = 0,
     bad = 0;
 
   for (const r of rows) {
-    const ref = r.mlmds[metric];
-    const cmp = r[device][metric];
+    const ref = r[refDevice][metric];
+    const test = r[testDevice][metric];
 
     const refValid = isValidValue(ref);
-    if (refValid) mlmdsValidCount++;
+    if (refValid) refValidCount++;
 
-    if (!refValid || !isValidValue(cmp)) continue;
+    if (!refValid || !isValidValue(test)) continue;
 
-    const diff = cmp - ref;
+    // Logic: Diff = Test Device Value - Reference Value
+    // e.g., if Test(MLM)=100 and Ref(Pro)=102, Diff = -2 (MLM is 2 lower)
+    const diff = test - ref;
     const abs = Math.abs(diff);
 
     diffs.push(diff);
@@ -136,7 +138,8 @@ export function computeMetric(rows: Row[], device: Device, metric: MetricKey): M
   }
 
   const N = diffs.length;
-  const capturePct = mlmdsValidCount ? (100 * N) / mlmdsValidCount : 0;
+  // Capture Rate: Percentage of Reference Shots that were also captured by Test Device
+  const capturePct = refValidCount ? (100 * N) / refValidCount : 0;
 
   const minV = absDiffs.length ? Math.min(...absDiffs) : NaN;
   const maxV = absDiffs.length ? Math.max(...absDiffs) : NaN;

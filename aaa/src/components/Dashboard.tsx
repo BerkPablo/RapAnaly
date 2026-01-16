@@ -15,7 +15,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
     const [activeTab, setActiveTab] = useState<Device>("pro2");
 
     const results = useMemo(() => {
-        return METRICS.map((m) => computeMetric(rows, activeTab, m.key));
+        // Here: Test Device = "mlmds", Reference Device = activeTab (pro2 or pro3)
+        return METRICS.map((m) => computeMetric(rows, "mlmds", activeTab, m.key));
     }, [rows, activeTab]);
 
     const averages = useMemo(() => {
@@ -64,13 +65,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
                         className={`btn-tab ${activeTab === "pro2" ? "active" : ""}`}
                         onClick={() => setActiveTab("pro2")}
                     >
-                        MLM DS ↔ Pro 2.0
+                        Pro 2.0 (Ref) ↔ MLM DS (Test)
                     </button>
                     <button
                         className={`btn-tab ${activeTab === "pro3" ? "active" : ""}`}
                         onClick={() => setActiveTab("pro3")}
                     >
-                        MLM DS ↔ Pro 3.0
+                        Pro 3.0 (Ref) ↔ MLM DS (Test)
                     </button>
                 </div>
 
@@ -90,9 +91,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
                         <span className="text-sm font-bold uppercase tracking-wider">Session Averages</span>
                     </div>
                     <div className="shot-grid">
+                        {/* Reference Row (Pro2/Pro3) - Now on TOP */}
                         <div className="shot-grid-row">
                             <div className="flex items-center">
-                                <span className="device-pill mlm">MLM AVG</span>
+                                <span className={`device-pill ${activeTab}`}>
+                                    {activeTab === "pro2" ? "PRO 2.0" : "PRO 3.0"} AVG (REF)
+                                </span>
                             </div>
                             {[
                                 { key: "distance", label: "DISTANCE" },
@@ -102,46 +106,43 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
                             ].map((m) => (
                                 <div key={m.key} className="flex flex-col">
                                     <div className="shot-grid-header">{m.label}</div>
-                                    <div className="shot-grid-value">{(averages.mlmds[m.key as MetricKey] ?? 0).toFixed(1)}</div>
+                                    <div className="shot-grid-value">{(averages[activeTab][m.key as MetricKey] ?? 0).toFixed(1)}</div>
                                 </div>
                             ))}
                         </div>
 
-                        {(["pro2", "pro3"] as const).map(device => (
-                            <div key={device} className="shot-grid-row">
-                                <div className="flex items-center mt-4">
-                                    <span className={`device-pill ${device}`}>
-                                        {device === "pro2" ? "PRO 2.0" : "PRO 3.0"} AVG
-                                    </span>
-                                </div>
-                                {[
-                                    { key: "distance", label: "DISTANCE" },
-                                    { key: "exitVelo", label: "VELO" },
-                                    { key: "launchAngle", label: "ANGLE" },
-                                    { key: "exitDir", label: "DIR" }
-                                ].map((m) => {
-                                    const k = m.key as MetricKey;
-                                    const val = averages[device][k];
-                                    const ref = averages.mlmds[k];
-                                    const diff = (val !== null && ref !== null) ? val - ref : undefined;
-                                    const diffClass = diff === undefined || Math.abs(diff) < 0.001 ? "zero" : diff > 0 ? "pos" : "neg";
-
-                                    return (
-                                        <div key={m.key} className="flex flex-col mt-4">
-                                            <div className="shot-grid-header">{m.label}</div>
-                                            <div className="flex items-baseline gap-2">
-                                                <div className="shot-grid-value">{(val ?? 0).toFixed(1)}</div>
-                                                {diff !== undefined && (
-                                                    <span className={`diff-value ${diffClass}`}>
-                                                        {diff > 0 ? "+" : ""}{diff.toFixed(1)}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </div>
-                                    );
-                                })}
+                        {/* Test Row (MLM DS) - Now on BOTTOM */}
+                        <div className="shot-grid-row">
+                            <div className="flex items-center mt-4">
+                                <span className="device-pill mlm">MLM AVG (TEST)</span>
                             </div>
-                        ))}
+                            {[
+                                { key: "distance", label: "DISTANCE" },
+                                { key: "exitVelo", label: "VELO" },
+                                { key: "launchAngle", label: "ANGLE" },
+                                { key: "exitDir", label: "DIR" }
+                            ].map((m) => {
+                                const k = m.key as MetricKey;
+                                const val = averages.mlmds[k]; // Test Value
+                                const ref = averages[activeTab][k]; // Reference Value
+                                const diff = (val !== null && ref !== null) ? val - ref : undefined;
+                                const diffClass = diff === undefined || Math.abs(diff) < 0.001 ? "zero" : diff > 0 ? "pos" : "neg";
+
+                                return (
+                                    <div key={m.key} className="flex flex-col mt-4">
+                                        <div className="shot-grid-header">{m.label}</div>
+                                        <div className="flex items-baseline gap-2">
+                                            <div className="shot-grid-value">{(val ?? 0).toFixed(1)}</div>
+                                            {diff !== undefined && (
+                                                <span className={`diff-value ${diffClass}`}>
+                                                    {diff > 0 ? "+" : ""}{diff.toFixed(1)}
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                 </div>
 

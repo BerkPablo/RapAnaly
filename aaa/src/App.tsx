@@ -71,9 +71,15 @@ function App() {
   };
 
   const mergedRows = useMemo(() => {
-    // We only care about shots that have an MLM DS entry as the baseline
-    const mlmShots = Object.keys(deviceData.mlmds);
-    if (mlmShots.length === 0) return [];
+    // Collect ALL unique shot IDs from all devices to properly calculate capture rates relative to any device
+    const allIds = new Set<string>();
+    Object.keys(deviceData.mlmds).forEach(id => allIds.add(id));
+    Object.keys(deviceData.pro2).forEach(id => allIds.add(id));
+    Object.keys(deviceData.pro3).forEach(id => allIds.add(id));
+
+    const uniqueIds = Array.from(allIds);
+
+    if (uniqueIds.length === 0) return [];
 
     const emptyDeviceData: DeviceData = {
       distance: "-",
@@ -82,9 +88,9 @@ function App() {
       exitDir: "-",
     };
 
-    return mlmShots.map((id) => ({
+    return uniqueIds.map((id) => ({
       shotId: id,
-      mlmds: deviceData.mlmds[id],
+      mlmds: deviceData.mlmds[id] || emptyDeviceData,
       pro2: deviceData.pro2[id] || emptyDeviceData,
       pro3: deviceData.pro3[id] || emptyDeviceData,
     })) as Row[];
@@ -176,7 +182,7 @@ function App() {
 
         if (data && data.data) {
           const rows = data.data as Row[];
-          
+
           const newDeviceData: {
             mlmds: Record<string, DeviceData>;
             pro2: Record<string, DeviceData>;
@@ -198,12 +204,12 @@ function App() {
           setActiveView("compare");
           // Optional: Restore firmware versions if they were saved in metadata
           if (session.devices) {
-             setFwVersions(prev => ({
-                 ...prev,
-                 mlmds: session.devices.mlmds || prev.mlmds,
-                 pro2: session.devices.pro2 || prev.pro2,
-                 pro3: session.devices.pro3 || prev.pro3,
-             }));
+            setFwVersions(prev => ({
+              ...prev,
+              mlmds: session.devices.mlmds || prev.mlmds,
+              pro2: session.devices.pro2 || prev.pro2,
+              pro3: session.devices.pro3 || prev.pro3,
+            }));
           }
         }
       });
