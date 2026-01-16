@@ -141,14 +141,15 @@ export function computeMetric(rows: Row[], testDevice: Device, refDevice: Device
   // Capture Rate: Percentage of Reference Shots that were also captured by Test Device
   const capturePct = refValidCount ? (100 * N) / refValidCount : 0;
 
-  const minV = absDiffs.length ? Math.min(...absDiffs) : NaN;
-  const maxV = absDiffs.length ? Math.max(...absDiffs) : NaN;
+  // Use Signed Diffs for Min/Max/Median/Std to show direction and true distribution
+  const minV = diffs.length ? Math.min(...diffs) : NaN;
+  const maxV = diffs.length ? Math.max(...diffs) : NaN;
 
-  const avgDiff = mean(diffs);
-  const absAvg = mean(absDiffs);
-  const med = median(absDiffs);
-  const stdAbs = sampleStd(absDiffs);
-  const p90 = percentileInc(absDiffs, 0.9);
+  const avgDiff = mean(diffs);     // Bias
+  const absAvg = mean(absDiffs);   // MAE
+  const med = median(diffs);       // Median Bias
+  const stdAbs = sampleStd(diffs); // Precision (Std Dev of Error)
+  const p90 = percentileInc(absDiffs, 0.9); // P90 remains Absolute (90% within X)
 
   const goodPct = N ? (100 * good) / N : NaN;
   const moderatePct = N ? (100 * moderate) / N : NaN;
