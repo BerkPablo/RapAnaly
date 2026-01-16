@@ -1,8 +1,9 @@
 import React from "react";
-import type { Row, MetricKey } from "../utils/statsEngine";
+import type { Row, MetricKey, Device } from "../utils/statsEngine";
 
 type ShotAnalysisProps = {
     rows: Row[];
+    referenceDevice: Device; // "pro2" or "pro3"
 };
 
 const MetricDisplay: React.FC<{
@@ -20,7 +21,7 @@ const MetricDisplay: React.FC<{
         return `${sign}${d.toFixed(1)}`;
     };
 
-    const diffClass = diff === undefined || diff === 0 ? "zero" : diff > 0 ? "pos" : "neg";
+    const diffClass = diff === undefined || Math.abs(diff) < 0.001 ? "zero" : diff > 0 ? "pos" : "neg";
 
     return (
         <div className="flex flex-col">
@@ -47,22 +48,23 @@ const SyncBadge: React.FC<{
     </div>
 );
 
-export const ShotAnalysis: React.FC<ShotAnalysisProps> = ({ rows }) => {
+export const ShotAnalysis: React.FC<ShotAnalysisProps> = ({ rows, referenceDevice }) => {
+    const refName = referenceDevice === "pro2" ? "PRO 2.0" : "PRO 3.0";
+
     return (
         <div className="flex flex-col gap-6 mt-8">
             <h2 className="text-2xl m-0 mb-4 px-2 brand-font">Detailed Shot Analysis</h2>
 
             {[...rows].reverse().map((row, idx) => {
-                // Allow 0 values to be displayed (user request)
                 const mlmValid = row.mlmds.distance !== "-" && row.mlmds.distance !== null;
-                const pro2Valid = row.pro2.distance !== "-" && row.pro2.distance !== null;
-                const pro3Valid = row.pro3.distance !== "-" && row.pro3.distance !== null;
+                const refValid = row[referenceDevice].distance !== "-" && row[referenceDevice].distance !== null;
 
-                const getDiff = (device: "pro2" | "pro3", key: MetricKey) => {
-                    const ref = row.mlmds[key];
-                    const cmp = row[device][key];
-                    if (typeof ref === "number" && typeof cmp === "number") {
-                        return cmp - ref;
+                // Diff = Test(MLM) - Ref(Pro)
+                const getDiff = (key: MetricKey) => {
+                    const ref = row[referenceDevice][key];
+                    const test = row.mlmds[key];
+                    if (typeof ref === "number" && typeof test === "number") {
+                        return test - ref; // Difference relative to Ref
                     }
                     return undefined;
                 };
@@ -75,49 +77,33 @@ export const ShotAnalysis: React.FC<ShotAnalysisProps> = ({ rows }) => {
                                 SHOT #{row.shotId}
                             </div>
                             <div className="sync-status-group">
+                                <SyncBadge name={refName} status={refValid ? "SYNC" : "NO DATA"} active={refValid} />
                                 <SyncBadge name="MLM" status={mlmValid ? "SYNC" : "NO DATA"} active={mlmValid} />
-                                <SyncBadge name="PRO 2.0" status={pro2Valid ? "SYNC" : "NO DATA"} active={pro2Valid} />
-                                <SyncBadge name="PRO 3.0" status={pro3Valid ? "SYNC" : "NO DATA"} active={pro3Valid} />
                             </div>
                         </div>
 
                         <div className="shot-grid">
-                            {/* MLM Row */}
+                            {/* Reference Row (Pro) - Render First */}
                             <div className="shot-grid-row">
                                 <div className="flex items-center">
-                                    <span className="device-pill mlm">MLM</span>
+                                    <span className={`device-pill ${referenceDevice}`}>{refName} (REF)</span>
                                 </div>
-                                <MetricDisplay label="DISTANCE" value={row.mlmds.distance} />
-                                <MetricDisplay label="VELO" value={row.mlmds.exitVelo} />
-                                <MetricDisplay label="ANGLE" value={row.mlmds.launchAngle} />
-                                <MetricDisplay label="DIR" value={row.mlmds.exitDir} />
+                                <MetricDisplay label="DISTANCE" value={row[referenceDevice].distance} />
+                                <MetricDisplay label="VELO" value={row[referenceDevice].exitVelo} />
+                                <MetricDisplay label="ANGLE" value={row[referenceDevice].launchAngle} />
+                                <MetricDisplay label="DIR" value={row[referenceDevice].exitDir} />
                             </div>
 
-                            {/* Pro 2.0 Row */}
-                            {pro2Valid && (
-                                <div className="shot-grid-row">
-                                    <div className="flex items-center mt-4">
-                                        <span className="device-pill pro2">PRO 2</span>
-                                    </div>
-                                    <MetricDisplay label="DISTANCE" value={row.pro2.distance} diff={getDiff("pro2", "distance")} />
-                                    <MetricDisplay label="VELO" value={row.pro2.exitVelo} diff={getDiff("pro2", "exitVelo")} />
-                                    <MetricDisplay label="ANGLE" value={row.pro2.launchAngle} diff={getDiff("pro2", "launchAngle")} />
-                                    <MetricDisplay label="DIR" value={row.pro2.exitDir} diff={getDiff("pro2", "exitDir")} />
+                            {/* MLM Row (Test) - Render Second with Diffs */}
+                            <div className="shot-grid-row">
+                                <div className="flex items-center mt-4">
+                                    <span className="device-pill mlm">MLM (TEST)</span>
                                 </div>
-                            )}
-
-                            {/* Pro 3.0 Row */}
-                            {pro3Valid && (
-                                <div className="shot-grid-row">
-                                    <div className="flex items-center mt-4">
-                                        <span className="device-pill pro3">PRO 3</span>
-                                    </div>
-                                    <MetricDisplay label="DISTANCE" value={row.pro3.distance} diff={getDiff("pro3", "distance")} />
-                                    <MetricDisplay label="VELO" value={row.pro3.exitVelo} diff={getDiff("pro3", "exitVelo")} />
-                                    <MetricDisplay label="ANGLE" value={row.pro3.launchAngle} diff={getDiff("pro3", "launchAngle")} />
-                                    <MetricDisplay label="DIR" value={row.pro3.exitDir} diff={getDiff("pro3", "exitDir")} />
-                                </div>
-                            )}
+                                <MetricDisplay label="DISTANCE" value={row.mlmds.distance} diff={getDiff("distance")} />
+                                <MetricDisplay label="VELO" value={row.mlmds.exitVelo} diff={getDiff("exitVelo")} />
+                                <MetricDisplay label="ANGLE" value={row.mlmds.launchAngle} diff={getDiff("launchAngle")} />
+                                <MetricDisplay label="DIR" value={row.mlmds.exitDir} diff={getDiff("exitDir")} />
+                            </div>
                         </div>
                     </div>
                 );

@@ -146,7 +146,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
                     </div>
                 </div>
 
-                <ShotAnalysis rows={rows} />
+                <ShotAnalysis rows={rows} referenceDevice={activeTab} />
 
             </main>
         </div >
