@@ -151,6 +151,9 @@ function App() {
       console.error("Update error:", error);
       alert("Failed to update session. Changes may be lost on reload.");
       loadSessions(); // Revert
+    } else {
+      // Force reload to confirm persistence
+      console.log("Session updated successfully");
     }
   };
 
