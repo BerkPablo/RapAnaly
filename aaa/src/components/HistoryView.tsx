@@ -90,14 +90,14 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ sessions, onLoad, onDe
                             </div>
 
                             {/* Column 4: Devices */}
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3 flex-wrap">
                                 {isEditing ? (
                                     <>
                                         {session.devices.mlmds !== undefined && (
                                             <div className="flex items-center gap-1">
                                                 <span className="text-[0.6rem] font-bold text-blue-400">MLM DS</span>
                                                 <input
-                                                    className="bg-black/50 border border-white/10 rounded px-1 py-0.5 text-xs text-white w-12"
+                                                    className="bg-black/50 border border-white/10 rounded px-1 py-0.5 text-xs text-white w-14 text-center"
                                                     value={editValues.mlmds}
                                                     onChange={(e) => setEditValues({ ...editValues, mlmds: e.target.value })}
                                                 />
@@ -107,7 +107,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ sessions, onLoad, onDe
                                             <div className="flex items-center gap-1">
                                                 <span className="text-[0.6rem] font-bold text-yellow-400">PRO 2.0</span>
                                                 <input
-                                                    className="bg-black/50 border border-white/10 rounded px-1 py-0.5 text-xs text-white w-12"
+                                                    className="bg-black/50 border border-white/10 rounded px-1 py-0.5 text-xs text-white w-14 text-center"
                                                     value={editValues.pro2}
                                                     onChange={(e) => setEditValues({ ...editValues, pro2: e.target.value })}
                                                 />
@@ -117,7 +117,7 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ sessions, onLoad, onDe
                                             <div className="flex items-center gap-1">
                                                 <span className="text-[0.6rem] font-bold text-purple-400">PRO 3.0</span>
                                                 <input
-                                                    className="bg-black/50 border border-white/10 rounded px-1 py-0.5 text-xs text-white w-12"
+                                                    className="bg-black/50 border border-white/10 rounded px-1 py-0.5 text-xs text-white w-14 text-center"
                                                     value={editValues.pro3}
                                                     onChange={(e) => setEditValues({ ...editValues, pro3: e.target.value })}
                                                 />
