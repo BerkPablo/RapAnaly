@@ -525,7 +525,7 @@ tr:hover td {
   position: sticky;
   top: 0;
   flex-shrink: 0;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .sidebar-header {
@@ -1066,11 +1066,15 @@ tr:hover td {
 .sticky-col {
   position: sticky;
   left: 0;
-  z-index: 20; /* Higher than content, lower than header */
-  background: var(--bg-card); /* Match card background to hide scrolling content */
-  backdrop-filter: blur(12px); /* Maintain glass effect */
+  z-index: 20;
+  /* Higher than content, lower than header */
+  background: var(--bg-card);
+  /* Match card background to hide scrolling content */
+  backdrop-filter: blur(12px);
+  /* Maintain glass effect */
   -webkit-backdrop-filter: blur(12px);
-  border-right: 1px solid var(--glass-border); /* Separator */
+  border-right: 1px solid var(--glass-border);
+  /* Separator */
 }
 
 /* Ensure sticky header stays on top of sticky column */
