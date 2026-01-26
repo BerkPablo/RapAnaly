@@ -74,7 +74,7 @@ export function percentileInc(arr: number[], p: number) {
 }
 
 export function classify(absDiff: number, a: number, b: number) {
-  if (absDiff < a) return "Good";
+  if (absDiff <= a) return "Good";
   if (absDiff <= b) return "Moderate";
   return "Bad";
 }
@@ -176,7 +176,7 @@ export function computeMetric(rows: Row[], testDevice: Device, refDevice: Device
     moderatePct,
     badPct,
     thresholds: {
-      good: `< ${a}`,
+      good: `<= ${a}`,
       moderate: `${a} - ${b}`,
       bad: `> ${b}`,
     },

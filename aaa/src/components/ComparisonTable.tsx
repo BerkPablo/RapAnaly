@@ -16,7 +16,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({ results }) => 
             <table>
                 <thead>
                     <tr>
-                        <th>Parameter</th>
+                        <th className="sticky-col">Parameter</th>
                         <th>Count</th>
                         <th>Capture(n)</th>
                         <th>Capture(%)</th>
@@ -36,7 +36,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({ results }) => 
                 <tbody>
                     {results.map((r) => (
                         <tr key={r.metric}>
-                            <td className="font-medium" style={{ whiteSpace: "nowrap" }}>{r.parameter}</td>
+                            <td className="font-medium sticky-col" style={{ whiteSpace: "nowrap" }}>{r.parameter}</td>
                             <td>{r.count}</td>
                             <td>{r.captureN}</td>
                             <td>{format(r.capturePct, 1)}%</td>

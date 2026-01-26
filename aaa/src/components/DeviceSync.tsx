@@ -26,6 +26,13 @@ export const DeviceSync: React.FC<DeviceSyncProps> = ({ label, onUpload, isSynce
         }
     };
 
+    // Reset file input when data is reset externally (e.g. via "Reset Discart Data")
+    React.useEffect(() => {
+        if (!isSynced && fileInputRef.current) {
+            fileInputRef.current.value = "";
+        }
+    }, [isSynced]);
+
     return (
         <div className="device-sync-row">
             <span className="device-label-short">{label.replace("PRO 2.0 ", "")}</span>
