@@ -17,8 +17,10 @@ const MetricDisplay: React.FC<{
     };
 
     const formatDiff = (d: number) => {
+        const rounded = d.toFixed(1);
+        if (rounded === "0.0" || rounded === "-0.0") return "0.0";
         const sign = d > 0 ? "+" : "";
-        return `${sign}${d.toFixed(1)}`;
+        return `${sign}${rounded}`;
     };
 
     const diffClass = diff === undefined || Math.abs(diff) < 0.001 ? "zero" : diff > 0 ? "pos" : "neg";
@@ -28,7 +30,7 @@ const MetricDisplay: React.FC<{
             <div className="shot-grid-header">{label}</div>
             <div className="flex items-baseline">
                 <span className="shot-grid-value">{formatValue(value)}</span>
-                {diff !== undefined && typeof value === "number" && (
+                {diff !== undefined && typeof value === "number" && value !== 0 && (
                     <span className={`diff-value ${diffClass}`}>{formatDiff(diff)}</span>
                 )}
             </div>
@@ -73,7 +75,6 @@ export const ShotAnalysis: React.FC<ShotAnalysisProps> = ({ rows, referenceDevic
                     <div key={row.shotId} className="glass-card shot-card overflow-hidden">
                         <div className="shot-header">
                             <div className="shot-title">
-                                <div className="number-prefix">{String(rows.length - idx).padStart(2, '0')}<br />10</div>
                                 SHOT #{row.shotId}
                             </div>
                             <div className="sync-status-group">
@@ -89,9 +90,9 @@ export const ShotAnalysis: React.FC<ShotAnalysisProps> = ({ rows, referenceDevic
                                     <span className={`device-pill ${referenceDevice}`}>{refName} (REF)</span>
                                 </div>
                                 <MetricDisplay label="DISTANCE" value={row[referenceDevice].distance} />
-                                <MetricDisplay label="VELO" value={row[referenceDevice].exitVelo} />
-                                <MetricDisplay label="ANGLE" value={row[referenceDevice].launchAngle} />
-                                <MetricDisplay label="DIR" value={row[referenceDevice].exitDir} />
+                                <MetricDisplay label="Exit Velocity" value={row[referenceDevice].exitVelo} />
+                                <MetricDisplay label="L. Angle" value={row[referenceDevice].launchAngle} />
+                                <MetricDisplay label="Exit Dir." value={row[referenceDevice].exitDir} />
                             </div>
 
                             {/* MLM Row (Test) - Render Second with Diffs */}
@@ -100,9 +101,9 @@ export const ShotAnalysis: React.FC<ShotAnalysisProps> = ({ rows, referenceDevic
                                     <span className="device-pill mlm">MLM (TEST)</span>
                                 </div>
                                 <MetricDisplay label="DISTANCE" value={row.mlmds.distance} diff={getDiff("distance")} />
-                                <MetricDisplay label="VELO" value={row.mlmds.exitVelo} diff={getDiff("exitVelo")} />
-                                <MetricDisplay label="ANGLE" value={row.mlmds.launchAngle} diff={getDiff("launchAngle")} />
-                                <MetricDisplay label="DIR" value={row.mlmds.exitDir} diff={getDiff("exitDir")} />
+                                <MetricDisplay label="Exit Velocity" value={row.mlmds.exitVelo} diff={getDiff("exitVelo")} />
+                                <MetricDisplay label="L. Angle" value={row.mlmds.launchAngle} diff={getDiff("launchAngle")} />
+                                <MetricDisplay label="Exit Dir." value={row.mlmds.exitDir} diff={getDiff("exitDir")} />
                             </div>
                         </div>
                     </div>

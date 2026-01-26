@@ -100,9 +100,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
                             </div>
                             {[
                                 { key: "distance", label: "DISTANCE" },
-                                { key: "exitVelo", label: "VELO" },
-                                { key: "launchAngle", label: "ANGLE" },
-                                { key: "exitDir", label: "DIR" }
+                                { key: "exitVelo", label: "Exit Velocity" },
+                                { key: "launchAngle", label: "L. Angle" },
+                                { key: "exitDir", label: "Exit Dir." }
                             ].map((m) => (
                                 <div key={m.key} className="flex flex-col">
                                     <div className="shot-grid-header">{m.label}</div>
@@ -118,9 +118,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
                             </div>
                             {[
                                 { key: "distance", label: "DISTANCE" },
-                                { key: "exitVelo", label: "VELO" },
-                                { key: "launchAngle", label: "ANGLE" },
-                                { key: "exitDir", label: "DIR" }
+                                { key: "exitVelo", label: "Exit Velocity" },
+                                { key: "launchAngle", label: "L. Angle" },
+                                { key: "exitDir", label: "Exit Dir." }
                             ].map((m) => {
                                 const k = m.key as MetricKey;
                                 const val = averages.mlmds[k]; // Test Value
@@ -133,9 +133,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
                                         <div className="shot-grid-header">{m.label}</div>
                                         <div className="flex items-baseline gap-2">
                                             <div className="shot-grid-value">{(val ?? 0).toFixed(1)}</div>
-                                            {diff !== undefined && (
+                                            {diff !== undefined && (val ?? 0) !== 0 && (
                                                 <span className={`diff-value ${diffClass}`}>
-                                                    {diff > 0 ? "+" : ""}{diff.toFixed(1)}
+                                                    {(() => {
+                                                        const rounded = diff.toFixed(1);
+                                                        if (rounded === "0.0" || rounded === "-0.0") return "0.0";
+                                                        return `${diff > 0 ? "+" : ""}${rounded}`;
+                                                    })()}
                                                 </span>
                                             )}
                                         </div>

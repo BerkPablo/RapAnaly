@@ -16,17 +16,23 @@ type SidebarProps = {
     activeView: "compare" | "history";
     onViewChange: (view: "compare" | "history") => void;
     isSessionSaved: boolean;
+    resetLabel?: string;
 };
 
 import React, { useState } from "react";
-import { UploadCloud, Save, Activity, History as HistoryIcon, Zap, RotateCcw, CheckCircle2 } from "lucide-react";
+import { UploadCloud, Save, Activity, History as HistoryIcon, Zap, RotateCcw, CheckCircle2, ArrowLeft } from "lucide-react";
 import { DeviceSync } from "./DeviceSync";
 
 
 export const Sidebar: React.FC<SidebarProps> = ({
-    onUpload, synced, onSave, onReset, fwVersions, onFwChange, activeView, onViewChange, isSessionSaved
+    onUpload, synced, onSave, onReset, fwVersions, onFwChange, activeView, onViewChange, isSessionSaved, resetLabel = "RESET DISCARD DATA"
 }) => {
     const [sessionMode, setSessionMode] = useState<"tee" | "soft_toss">("tee");
+
+    // Determine icon based on label text for simplicity, or add a prop if preferred.
+    // "CLOSE SESSION" -> ArrowLeft (Reverse Arrow)
+    // "RESET DISCARD DATA" -> RotateCcw
+    const isCloseSession = resetLabel.includes("CLOSE");
 
     return (
         <div className="sidebar">
@@ -142,8 +148,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 justifyContent: "center",
                 gap: "6px"
             }}>
-                <RotateCcw size={12} />
-                RESET DISCARD DATA
+                {isCloseSession ? <ArrowLeft size={16} /> : <RotateCcw size={12} />}
+                {resetLabel}
             </button>
         </div>
     );

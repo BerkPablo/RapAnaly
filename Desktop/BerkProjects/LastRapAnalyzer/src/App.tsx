@@ -26,9 +26,9 @@ function App() {
   const [user, setUser] = useState<any>(null);
 
   const [fwVersions, setFwVersions] = useState({
-    mlmds: "2V",
-    pro2: "3V",
-    pro3: "4V",
+    mlmds: "",
+    pro2: "",
+    pro3: "",
   });
 
   // Auth Listener
@@ -138,6 +138,22 @@ function App() {
     }
   };
 
+  const onUpdateSession = async (id: string, newDevices: { mlmds?: string; pro2?: string; pro3?: string }) => {
+    // Optimistic update
+    setSessions(prev => prev.map(s => s.id === id ? { ...s, devices: newDevices } : s));
+
+    const { error } = await supabase
+      .from('sessions')
+      .update({ device_metadata: newDevices })
+      .eq('id', id);
+
+    if (error) {
+      console.error("Update error:", error);
+      alert("Failed to update session. Changes may be lost on reload.");
+      loadSessions(); // Revert
+    }
+  };
+
   const onSave = async (mode: "tee" | "soft_toss") => {
     if (mergedRows.length === 0) return;
     if (!user) {
@@ -171,6 +187,8 @@ function App() {
     setIsSessionSaved(true);
   };
 
+  const [loadedSessionId, setLoadedSessionId] = useState<string | null>(null);
+
   const onLoad = (session: SavedSession) => {
     supabase.from('sessions').select('data').eq('id', session.id).single()
       .then(({ data, error }) => {
@@ -181,6 +199,7 @@ function App() {
         }
 
         if (data && data.data) {
+          setLoadedSessionId(session.id);
           const rows = data.data as Row[];
 
           const newDeviceData: {
@@ -195,14 +214,12 @@ function App() {
 
           rows.forEach((r) => {
             if (r.mlmds) newDeviceData.mlmds[r.shotId] = r.mlmds;
-            // Handle potentially missing device data in older saves or just safety
             if (r.pro2) newDeviceData.pro2[r.shotId] = r.pro2;
             if (r.pro3) newDeviceData.pro3[r.shotId] = r.pro3;
           });
 
           setDeviceData(newDeviceData);
           setActiveView("compare");
-          // Optional: Restore firmware versions if they were saved in metadata
           if (session.devices) {
             setFwVersions(prev => ({
               ...prev,
@@ -235,10 +252,11 @@ function App() {
     setResetModalOpen(true);
   };
 
-  const confirmReset = () => {
+  const resetAll = () => {
     setDeviceData({ mlmds: {}, pro2: {}, pro3: {} });
+    setFwVersions({ mlmds: "", pro2: "", pro3: "" });
     setIsSessionSaved(false);
-    setResetModalOpen(false);
+    setLoadedSessionId(null);
   };
 
   const synced = {
@@ -268,6 +286,7 @@ function App() {
         onFwChange={(device, val) => setFwVersions(prev => ({ ...prev, [device]: val }))}
         activeView={activeView}
         onViewChange={setActiveView}
+        resetLabel={loadedSessionId ? "CLOSE LOADED SESSION" : "RESET DISCARD DATA"}
       />
       <div className="main-content" style={{ flex: 1, overflowY: "auto", position: "relative" }}>
         {activeView === "compare" ? (
@@ -280,6 +299,7 @@ function App() {
               setActiveView("compare");
             }}
             onDelete={onDelete}
+            onUpdate={onUpdateSession}
           />
         )}
       </div>
@@ -296,7 +316,14 @@ function App() {
       <ResetConfirmationModal
         isOpen={resetModalOpen}
         onClose={() => setResetModalOpen(false)}
-        onConfirm={confirmReset}
+        onConfirm={() => {
+          resetAll();
+          setResetModalOpen(false);
+        }}
+        title={loadedSessionId ? "CLOSE LOADED SESSION?" : "RESET DATA?"}
+        message={loadedSessionId
+          ? "This will close the current view. Your saved session remains in History."
+          : "Your data on Session Compare will be reset."}
       />
     </div>
   );

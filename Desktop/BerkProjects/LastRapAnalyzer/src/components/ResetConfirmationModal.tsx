@@ -5,9 +5,17 @@ type ResetConfirmationModalProps = {
     isOpen: boolean;
     onClose: () => void;
     onConfirm: () => void;
+    title?: string;
+    message?: string;
 };
 
-export const ResetConfirmationModal: React.FC<ResetConfirmationModalProps> = ({ isOpen, onClose, onConfirm }) => {
+export const ResetConfirmationModal: React.FC<ResetConfirmationModalProps> = ({
+    isOpen,
+    onClose,
+    onConfirm,
+    title = "RESET DATA?",
+    message = "Your data on Session Compare will be reset."
+}) => {
     if (!isOpen) return null;
 
     return (
@@ -54,11 +62,11 @@ export const ResetConfirmationModal: React.FC<ResetConfirmationModalProps> = ({ 
                 </div>
 
                 <h2 className="text-2xl font-black italic uppercase tracking-wider mb-3 text-white">
-                    RESET DATA?
+                    {title}
                 </h2>
 
                 <p className="text-muted text-sm mb-8 leading-relaxed" style={{ color: '#a1a1aa' }}>
-                    Session compare üzerindeki datalarınız resetlenecek.
+                    {message}
                 </p>
 
                 <div className="flex gap-4" style={{ justifyContent: 'center', width: '100%' }}>
