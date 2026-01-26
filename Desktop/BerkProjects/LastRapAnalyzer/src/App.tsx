@@ -142,6 +142,8 @@ function App() {
     // Optimistic update
     setSessions(prev => prev.map(s => s.id === id ? { ...s, devices: newDevices } : s));
 
+    console.log("Saving session update to DB:", id, newDevices);
+
     const { error } = await supabase
       .from('sessions')
       .update({ device_metadata: newDevices })
@@ -149,7 +151,7 @@ function App() {
 
     if (error) {
       console.error("Update error:", error);
-      alert("Failed to update session. Changes may be lost on reload.");
+      alert(`Failed to update session: ${error.message} (${error.code})`);
       loadSessions(); // Revert
     } else {
       // Force reload to confirm persistence
