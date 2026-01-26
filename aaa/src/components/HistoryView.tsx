@@ -68,79 +68,76 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ sessions, onLoad, onDe
                     const isEditing = editingId === session.id;
 
                     return (
-                        <div key={session.id} className="history-item" style={{
-                            display: "grid",
-                            gridTemplateColumns: "140px 100px 220px 1fr auto",
-                            alignItems: "center",
-                            gap: "1rem"
-                        }}>
+                        <div key={session.id} className="history-item flex flex-col md:grid md:grid-cols-[140px_100px_1fr_auto] gap-4 p-4 items-center bg-white/5 border border-white/10 rounded-xl mb-4">
                             {/* Column 1: Mode */}
-                            <div className="session-mode-badge" style={{ fontSize: "1.2rem" }}>
+                            <div className="session-mode-badge w-full md:w-auto text-center md:text-left text-lg md:text-xl">
                                 {session.mode.replace("_", " ")}
                             </div>
 
                             {/* Column 2: Shot Count */}
-                            <div className="badge-count">
+                            <div className="badge-count w-full md:w-auto justify-center md:justify-start">
                                 {session.shotCount} SHOTS
                             </div>
 
-                            {/* Column 3: Date/Time */}
-                            <div className="text-xs font-bold text-muted uppercase tracking-widest">
-                                {session.date} • {session.time}
-                            </div>
+                            {/* Column 3: Date/Time + Devices - Combined on mobile, split/grid on desktop */}
+                            <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto flex-1">
+                                <div className="text-xs font-bold text-muted uppercase tracking-widest whitespace-nowrap">
+                                    {session.date} • {session.time}
+                                </div>
 
-                            {/* Column 4: Devices - Allow wrap with smaller gap */}
-                            <div className="flex items-center gap-2 flex-wrap" style={{ maxWidth: "220px" }}>
-                                {isEditing ? (
-                                    <>
-                                        {session.devices.mlmds !== undefined && (
-                                            <div className="flex items-center gap-1 bg-black/30 rounded p-1 border border-white/5">
-                                                <span className="text-[0.6rem] font-bold text-blue-400">MLM</span>
-                                                <input
-                                                    className="bg-black/50 border border-white/10 rounded px-1 text-[0.65rem] text-white w-10 text-center"
-                                                    value={editValues.mlmds}
-                                                    onChange={(e) => setEditValues({ ...editValues, mlmds: e.target.value })}
-                                                />
-                                            </div>
-                                        )}
-                                        {session.devices.pro2 !== undefined && (
-                                            <div className="flex items-center gap-1 bg-black/30 rounded p-1 border border-white/5">
-                                                <span className="text-[0.6rem] font-bold text-yellow-400">PRO2</span>
-                                                <input
-                                                    className="bg-black/50 border border-white/10 rounded px-1 text-[0.65rem] text-white w-10 text-center"
-                                                    value={editValues.pro2}
-                                                    onChange={(e) => setEditValues({ ...editValues, pro2: e.target.value })}
-                                                />
-                                            </div>
-                                        )}
-                                        {session.devices.pro3 !== undefined && (
-                                            <div className="flex items-center gap-1 bg-black/30 rounded p-1 border border-white/5">
-                                                <span className="text-[0.6rem] font-bold text-purple-400">PRO3</span>
-                                                <input
-                                                    className="bg-black/50 border border-white/10 rounded px-1 text-[0.65rem] text-white w-10 text-center"
-                                                    value={editValues.pro3}
-                                                    onChange={(e) => setEditValues({ ...editValues, pro3: e.target.value })}
-                                                />
-                                            </div>
-                                        )}
-                                    </>
-                                ) : (
-                                    <>
-                                        {session.devices.mlmds && (
-                                            <span className="device-chip-fw mlm text-[0.65rem] px-1.5 py-0.5">MLM: {session.devices.mlmds}</span>
-                                        )}
-                                        {session.devices.pro2 && (
-                                            <span className="device-chip-fw pro2 text-[0.65rem] px-1.5 py-0.5">Pro2: {session.devices.pro2}</span>
-                                        )}
-                                        {session.devices.pro3 && (
-                                            <span className="device-chip-fw pro3 text-[0.65rem] px-1.5 py-0.5">Pro3: {session.devices.pro3}</span>
-                                        )}
-                                    </>
-                                )}
+                                {/* Devices Input Area */}
+                                <div className="flex flex-wrap justify-center md:justify-start gap-2 w-full">
+                                    {isEditing ? (
+                                        <>
+                                            {session.devices.mlmds !== undefined && (
+                                                <div className="flex items-center gap-1 bg-black/30 rounded p-1 border border-white/5">
+                                                    <span className="text-[0.6rem] font-bold text-blue-400">MLM</span>
+                                                    <input
+                                                        className="bg-black/50 border border-white/10 rounded px-1 text-[0.65rem] text-white w-12 text-center"
+                                                        value={editValues.mlmds}
+                                                        onChange={(e) => setEditValues({ ...editValues, mlmds: e.target.value })}
+                                                    />
+                                                </div>
+                                            )}
+                                            {session.devices.pro2 !== undefined && (
+                                                <div className="flex items-center gap-1 bg-black/30 rounded p-1 border border-white/5">
+                                                    <span className="text-[0.6rem] font-bold text-yellow-400">PRO2</span>
+                                                    <input
+                                                        className="bg-black/50 border border-white/10 rounded px-1 text-[0.65rem] text-white w-12 text-center"
+                                                        value={editValues.pro2}
+                                                        onChange={(e) => setEditValues({ ...editValues, pro2: e.target.value })}
+                                                    />
+                                                </div>
+                                            )}
+                                            {session.devices.pro3 !== undefined && (
+                                                <div className="flex items-center gap-1 bg-black/30 rounded p-1 border border-white/5">
+                                                    <span className="text-[0.6rem] font-bold text-purple-400">PRO3</span>
+                                                    <input
+                                                        className="bg-black/50 border border-white/10 rounded px-1 text-[0.65rem] text-white w-12 text-center"
+                                                        value={editValues.pro3}
+                                                        onChange={(e) => setEditValues({ ...editValues, pro3: e.target.value })}
+                                                    />
+                                                </div>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <>
+                                            {session.devices.mlmds && (
+                                                <span className="device-chip-fw mlm text-[0.65rem] px-1.5 py-0.5">MLM: {session.devices.mlmds}</span>
+                                            )}
+                                            {session.devices.pro2 && (
+                                                <span className="device-chip-fw pro2 text-[0.65rem] px-1.5 py-0.5">Pro2: {session.devices.pro2}</span>
+                                            )}
+                                            {session.devices.pro3 && (
+                                                <span className="device-chip-fw pro3 text-[0.65rem] px-1.5 py-0.5">Pro3: {session.devices.pro3}</span>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
                             </div>
 
                             {/* Column 5: Actions */}
-                            <div className="flex gap-2 justify-end pl-6 border-l" style={{ borderColor: "var(--glass-border)" }}>
+                            <div className="flex gap-2 justify-end w-full md:w-auto md:pl-6 md:border-l border-white/10 pt-4 md:pt-0 border-t md:border-t-0">
                                 {isEditing ? (
                                     <>
                                         <button
