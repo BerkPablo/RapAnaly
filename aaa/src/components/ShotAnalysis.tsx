@@ -57,7 +57,7 @@ export const ShotAnalysis: React.FC<ShotAnalysisProps> = ({ rows, referenceDevic
         <div className="flex flex-col gap-6 mt-8">
             <h2 className="text-2xl m-0 mb-4 px-2 brand-font">Detailed Shot Analysis</h2>
 
-            {[...rows].reverse().map((row, idx) => {
+            {[...rows].reverse().map((row) => {
                 const mlmValid = row.mlmds.distance !== "-" && row.mlmds.distance !== null;
                 const refValid = row[referenceDevice].distance !== "-" && row[referenceDevice].distance !== null;
 
