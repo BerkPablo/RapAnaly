@@ -104,9 +104,9 @@ h3 {
 
 .btn-back {
   padding: 0.5rem 1rem;
-  background: var(--primary);
-  /* Blue */
-  border: 1px solid var(--primary);
+  background: var(--error);
+  /* Red */
+  border: 1px solid var(--error);
   color: white;
   font-size: 0.75rem;
   font-weight: 700;
@@ -119,16 +119,16 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-  /* Blue Glow */
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+  /* Red Glow */
 }
 
 .btn-back:hover {
-  background: #2563eb;
-  /* Darker Blue */
-  border-color: #2563eb;
+  background: #dc2626;
+  /* Darker Red */
+  border-color: #dc2626;
   transform: translateX(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
 }
 
 
