@@ -263,27 +263,36 @@ function App() {
     return <OnboardingPage onComplete={() => setViewMode("app")} />;
   }
 
+  const handleCloseSession = () => {
+    resetAll();
+    setActiveView("history");
+  };
+
   return (
     <div style={{ display: "flex", width: "100%", height: "100vh", overflow: "hidden" }}>
-      <Sidebar
-        onUpload={onUpload}
-        synced={synced}
-        onSave={onSave}
-        isSessionSaved={isSessionSaved}
-        onReset={onReset}
-        fwVersions={fwVersions}
-        onFwChange={(device, val) => setFwVersions(prev => ({ ...prev, [device]: val }))}
-        activeView={activeView}
-        onViewChange={setActiveView}
-        resetLabel={loadedSessionId ? "CLOSE LOADED SESSION" : "RESET DISCARD DATA"}
-        disabled={!!loadedSessionId}
-      />
+      {!loadedSessionId && (
+        <Sidebar
+          onUpload={onUpload}
+          synced={synced}
+          onSave={onSave}
+          isSessionSaved={isSessionSaved}
+          onReset={onReset}
+          fwVersions={fwVersions}
+          onFwChange={(device, val) => setFwVersions(prev => ({ ...prev, [device]: val }))}
+          activeView={activeView}
+          onViewChange={setActiveView}
+          resetLabel={loadedSessionId ? "CLOSE LOADED SESSION" : "RESET DISCARD DATA"}
+          disabled={false}
+        />
+      )}
+
       <div className="main-content" style={{ flex: 1, overflowY: "auto", position: "relative" }}>
         {activeView === "compare" ? (
           <Dashboard
             rows={mergedRows}
             onLogout={() => supabase.auth.signOut()}
             sessionMode={loadedSessionMode}
+            onCloseSession={loadedSessionId ? handleCloseSession : undefined}
           />
         ) : (
           <HistoryView
