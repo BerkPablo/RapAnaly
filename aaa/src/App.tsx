@@ -285,7 +285,7 @@ function App() {
         collapsed={!!loadedSessionId}
       />
 
-      <div className="main-content" style={{ flex: 1, overflowY: "auto", position: "relative" }}>
+      <div className={`main-content ${loadedSessionId ? 'expanded' : ''}`}>
         {activeView === "compare" ? (
           <Dashboard
             rows={mergedRows}
