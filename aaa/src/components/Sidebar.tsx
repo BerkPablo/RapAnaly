@@ -64,7 +64,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </div>
             </div>
 
-            <div className={`sidebar-content ${disabled ? 'pointer-events-none opacity-50 grayscale' : ''}`}>
+            <div className={`sidebar-content ${disabled ? 'opacity-50 grayscale' : ''}`}>
                 <div className="session-mode-section">
                     <div className="section-label">
                         <Zap size={14} />
@@ -74,12 +74,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         <button
                             className={`toggle-btn ${sessionMode === "tee" ? "active" : ""}`}
                             onClick={() => !disabled && setSessionMode("tee")}
+                            disabled={disabled}
                         >
                             TEE
                         </button>
                         <button
                             className={`toggle-btn ${sessionMode === "soft_toss" ? "active" : ""}`}
                             onClick={() => !disabled && setSessionMode("soft_toss")}
+                            disabled={disabled}
                         >
                             SOFT TOSS
                         </button>
@@ -91,39 +93,42 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     CSV UPLOAD
                 </div>
 
-                <DeviceSync
-                    name="MLM"
-                    label="MLM DS"
-                    type="mlm"
-                    isSynced={synced.mlmds}
-                    fwVersion={fwVersions.mlmds}
-                    onFwChange={(val) => onFwChange("mlmds", val)}
-                    onUpload={(text: string) => onUpload("mlmds", text)}
-                />
+                <div style={{ pointerEvents: disabled ? "none" : "auto" }}>
+                    <DeviceSync
+                        name="MLM"
+                        label="MLM DS"
+                        type="mlm"
+                        isSynced={synced.mlmds}
+                        fwVersion={fwVersions.mlmds}
+                        onFwChange={(val) => onFwChange("mlmds", val)}
+                        onUpload={(text: string) => onUpload("mlmds", text)}
+                    />
 
-                <DeviceSync
-                    name="PRO 2.0"
-                    label="PRO 2.0"
-                    type="pro2"
-                    isSynced={synced.pro2}
-                    fwVersion={fwVersions.pro2}
-                    onFwChange={(val: string) => onFwChange("pro2", val)}
-                    onUpload={(text: string) => onUpload("pro2", text)}
-                />
+                    <DeviceSync
+                        name="PRO 2.0"
+                        label="PRO 2.0"
+                        type="pro2"
+                        isSynced={synced.pro2}
+                        fwVersion={fwVersions.pro2}
+                        onFwChange={(val: string) => onFwChange("pro2", val)}
+                        onUpload={(text: string) => onUpload("pro2", text)}
+                    />
 
-                <DeviceSync
-                    name="PRO 3.0"
-                    label="PRO 3.0"
-                    type="pro3"
-                    isSynced={synced.pro3}
-                    fwVersion={fwVersions.pro3}
-                    onFwChange={(val) => onFwChange("pro3", val)}
-                    onUpload={(text: string) => onUpload("pro3", text)}
-                />
+                    <DeviceSync
+                        name="PRO 3.0"
+                        label="PRO 3.0"
+                        type="pro3"
+                        isSynced={synced.pro3}
+                        fwVersion={fwVersions.pro3}
+                        onFwChange={(val) => onFwChange("pro3", val)}
+                        onUpload={(text: string) => onUpload("pro3", text)}
+                    />
+                </div>
 
                 <button
                     className={`btn-save-comparison ${isSessionSaved ? 'disabled' : ''}`}
                     onClick={() => !isSessionSaved && !disabled && onSave(sessionMode)}
+                    disabled={disabled || isSessionSaved}
                     style={isSessionSaved ? { opacity: 0.5, cursor: 'not-allowed', background: '#22c55e', color: 'white' } : {}}
                 >
                     {isSessionSaved ? <CheckCircle2 size={18} /> : <Save size={18} />}
