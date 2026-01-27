@@ -18,6 +18,7 @@ type SidebarProps = {
     isSessionSaved: boolean;
     resetLabel?: string;
     disabled?: boolean;
+    collapsed?: boolean;
 };
 
 import React, { useState } from "react";
@@ -26,7 +27,7 @@ import { DeviceSync } from "./DeviceSync";
 
 
 export const Sidebar: React.FC<SidebarProps> = ({
-    onUpload, synced, onSave, onReset, fwVersions, onFwChange, activeView, onViewChange, isSessionSaved, resetLabel = "RESET DISCARD DATA", disabled = false
+    onUpload, synced, onSave, onReset, fwVersions, onFwChange, activeView, onViewChange, isSessionSaved, resetLabel = "RESET DISCARD DATA", disabled = false, collapsed = false
 }) => {
     const [sessionMode, setSessionMode] = useState<"tee" | "soft_toss">("tee");
 
@@ -36,7 +37,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     const isCloseSession = resetLabel.includes("CLOSE");
 
     return (
-        <div className={`sidebar ${disabled ? 'opacity-90' : ''}`}>
+        <div className={`sidebar ${collapsed ? 'collapsed' : ''} ${disabled ? 'opacity-90' : ''}`}>
             <div className="sidebar-header">
                 <div className="sidebar-logo">
                     <Activity size={24} className="text-primary" />

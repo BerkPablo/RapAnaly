@@ -526,6 +526,16 @@ tr:hover td {
   top: 0;
   flex-shrink: 0;
   overflow-y: auto;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 1;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  padding: 0;
+  border-right-color: transparent;
+  opacity: 0;
+  overflow: hidden;
 }
 
 .sidebar-header {

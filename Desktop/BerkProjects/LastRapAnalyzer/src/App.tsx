@@ -270,21 +270,20 @@ function App() {
 
   return (
     <div style={{ display: "flex", width: "100%", height: "100vh", overflow: "hidden" }}>
-      {!loadedSessionId && (
-        <Sidebar
-          onUpload={onUpload}
-          synced={synced}
-          onSave={onSave}
-          isSessionSaved={isSessionSaved}
-          onReset={onReset}
-          fwVersions={fwVersions}
-          onFwChange={(device, val) => setFwVersions(prev => ({ ...prev, [device]: val }))}
-          activeView={activeView}
-          onViewChange={setActiveView}
-          resetLabel={loadedSessionId ? "CLOSE LOADED SESSION" : "RESET DISCARD DATA"}
-          disabled={false}
-        />
-      )}
+      <Sidebar
+        onUpload={onUpload}
+        synced={synced}
+        onSave={onSave}
+        isSessionSaved={isSessionSaved}
+        onReset={onReset}
+        fwVersions={fwVersions}
+        onFwChange={(device, val) => setFwVersions(prev => ({ ...prev, [device]: val }))}
+        activeView={activeView}
+        onViewChange={setActiveView}
+        resetLabel={loadedSessionId ? "CLOSE LOADED SESSION" : "RESET DISCARD DATA"}
+        disabled={false}
+        collapsed={!!loadedSessionId}
+      />
 
       <div className="main-content" style={{ flex: 1, overflowY: "auto", position: "relative" }}>
         {activeView === "compare" ? (
