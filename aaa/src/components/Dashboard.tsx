@@ -46,7 +46,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout, sessionMod
                             className="btn-back"
                         >
                             <ArrowLeft size={16} />
-                            BACK TO HISTORY
+                            BACK
                         </button>
                     ) : null}
 
