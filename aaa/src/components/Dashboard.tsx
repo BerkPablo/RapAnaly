@@ -43,7 +43,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout, sessionMod
                     {onCloseSession ? (
                         <button
                             onClick={onCloseSession}
-                            className="flex items-center gap-2 text-muted hover:text-white mb-2 transition-colors font-bold text-sm"
+                            className="btn-back"
                         >
                             <ArrowLeft size={16} />
                             BACK TO HISTORY
