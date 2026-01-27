@@ -138,26 +138,7 @@ function App() {
     }
   };
 
-  const onUpdateSession = async (id: string, newDevices: { mlmds?: string; pro2?: string; pro3?: string }) => {
-    // Optimistic update
-    setSessions(prev => prev.map(s => s.id === id ? { ...s, devices: newDevices } : s));
 
-    console.log("Saving session update to DB:", id, newDevices);
-
-    const { error } = await supabase
-      .from('sessions')
-      .update({ device_metadata: newDevices })
-      .eq('id', id);
-
-    if (error) {
-      console.error("Update error:", error);
-      alert(`Failed to update session: ${error.message} (${error.code})`);
-      loadSessions(); // Revert
-    } else {
-      // Force reload to confirm persistence
-      console.log("Session updated successfully");
-    }
-  };
 
   const onSave = async (mode: "tee" | "soft_toss") => {
     if (mergedRows.length === 0) return;
@@ -304,7 +285,6 @@ function App() {
               setActiveView("compare");
             }}
             onDelete={onDelete}
-            onUpdate={onUpdateSession}
           />
         )}
       </div>
