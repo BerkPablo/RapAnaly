@@ -174,6 +174,7 @@ function App() {
   };
 
   const [loadedSessionId, setLoadedSessionId] = useState<string | null>(null);
+  const [loadedSessionMode, setLoadedSessionMode] = useState<string | null>(null);
 
   const onLoad = (session: SavedSession) => {
     supabase.from('sessions').select('data').eq('id', session.id).single()
@@ -186,6 +187,7 @@ function App() {
 
         if (data && data.data) {
           setLoadedSessionId(session.id);
+          setLoadedSessionMode(session.mode);
           const rows = data.data as Row[];
 
           const newDeviceData: {
@@ -243,6 +245,7 @@ function App() {
     setFwVersions({ mlmds: "", pro2: "", pro3: "" });
     setIsSessionSaved(false);
     setLoadedSessionId(null);
+    setLoadedSessionMode(null);
   };
 
   const synced = {
@@ -273,10 +276,15 @@ function App() {
         activeView={activeView}
         onViewChange={setActiveView}
         resetLabel={loadedSessionId ? "CLOSE LOADED SESSION" : "RESET DISCARD DATA"}
+        disabled={!!loadedSessionId}
       />
       <div className="main-content" style={{ flex: 1, overflowY: "auto", position: "relative" }}>
         {activeView === "compare" ? (
-          <Dashboard rows={mergedRows} onLogout={() => supabase.auth.signOut()} />
+          <Dashboard
+            rows={mergedRows}
+            onLogout={() => supabase.auth.signOut()}
+            sessionMode={loadedSessionMode}
+          />
         ) : (
           <HistoryView
             sessions={sessions}
@@ -288,6 +296,7 @@ function App() {
           />
         )}
       </div>
+
 
       <DeleteConfirmationModal
         isOpen={deleteModalState.isOpen}

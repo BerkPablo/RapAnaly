@@ -17,6 +17,7 @@ type SidebarProps = {
     onViewChange: (view: "compare" | "history") => void;
     isSessionSaved: boolean;
     resetLabel?: string;
+    disabled?: boolean;
 };
 
 import React, { useState } from "react";
@@ -25,7 +26,7 @@ import { DeviceSync } from "./DeviceSync";
 
 
 export const Sidebar: React.FC<SidebarProps> = ({
-    onUpload, synced, onSave, onReset, fwVersions, onFwChange, activeView, onViewChange, isSessionSaved, resetLabel = "RESET DISCARD DATA"
+    onUpload, synced, onSave, onReset, fwVersions, onFwChange, activeView, onViewChange, isSessionSaved, resetLabel = "RESET DISCARD DATA", disabled = false
 }) => {
     const [sessionMode, setSessionMode] = useState<"tee" | "soft_toss">("tee");
 
@@ -35,7 +36,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     const isCloseSession = resetLabel.includes("CLOSE");
 
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${disabled ? 'opacity-90' : ''}`}>
             <div className="sidebar-header">
                 <div className="sidebar-logo">
                     <Activity size={24} className="text-primary" />
@@ -63,7 +64,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </div>
             </div>
 
-            <div className="sidebar-content">
+            <div className={`sidebar-content ${disabled ? 'pointer-events-none opacity-50 grayscale' : ''}`}>
                 <div className="session-mode-section">
                     <div className="section-label">
                         <Zap size={14} />
@@ -72,13 +73,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     <div className="toggle-group">
                         <button
                             className={`toggle-btn ${sessionMode === "tee" ? "active" : ""}`}
-                            onClick={() => setSessionMode("tee")}
+                            onClick={() => !disabled && setSessionMode("tee")}
                         >
                             TEE
                         </button>
                         <button
                             className={`toggle-btn ${sessionMode === "soft_toss" ? "active" : ""}`}
-                            onClick={() => setSessionMode("soft_toss")}
+                            onClick={() => !disabled && setSessionMode("soft_toss")}
                         >
                             SOFT TOSS
                         </button>
@@ -122,7 +123,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                 <button
                     className={`btn-save-comparison ${isSessionSaved ? 'disabled' : ''}`}
-                    onClick={() => !isSessionSaved && onSave(sessionMode)}
+                    onClick={() => !isSessionSaved && !disabled && onSave(sessionMode)}
                     style={isSessionSaved ? { opacity: 0.5, cursor: 'not-allowed', background: '#22c55e', color: 'white' } : {}}
                 >
                     {isSessionSaved ? <CheckCircle2 size={18} /> : <Save size={18} />}
