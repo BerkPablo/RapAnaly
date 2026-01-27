@@ -64,13 +64,13 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ sessions, onLoad, onDe
                             {/* Column 4: Devices - Allow wrap with smaller gap */}
                             <div className="flex items-center gap-2 flex-wrap" style={{ maxWidth: "220px" }}>
                                 {session.devices.mlmds && (
-                                    <span className="device-chip-fw mlm text-[0.65rem] px-1.5 py-0.5">MLM: {session.devices.mlmds}</span>
+                                    <span className="device-chip-fw mlm text-[0.65rem] px-1.5 py-0.5">MLM DS: {session.devices.mlmds}</span>
                                 )}
                                 {session.devices.pro2 && (
-                                    <span className="device-chip-fw pro2 text-[0.65rem] px-1.5 py-0.5">Pro2: {session.devices.pro2}</span>
+                                    <span className="device-chip-fw pro2 text-[0.65rem] px-1.5 py-0.5">PRO 2.0: {session.devices.pro2}</span>
                                 )}
                                 {session.devices.pro3 && (
-                                    <span className="device-chip-fw pro3 text-[0.65rem] px-1.5 py-0.5">Pro3: {session.devices.pro3}</span>
+                                    <span className="device-chip-fw pro3 text-[0.65rem] px-1.5 py-0.5">PRO 3.0: {session.devices.pro3}</span>
                                 )}
                             </div>
 
