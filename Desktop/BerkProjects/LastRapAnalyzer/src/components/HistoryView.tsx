@@ -32,9 +32,9 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ sessions, onLoad, onDe
                         Session History
                     </h1>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 shadow-sm backdrop-blur-sm">
-                    <span className="text-primary font-black text-xs">{sessions.length}</span>
-                    <span className="text-[0.65rem] font-bold text-muted uppercase tracking-[0.15em]">Sessions Saved</span>
+                <div className="flex items-baseline gap-2 border-l border-white/10 pl-4 h-8">
+                    <span className="text-2xl font-black text-primary" style={{ lineHeight: 0.8 }}>{sessions.length}</span>
+                    <span className="text-[0.65rem] font-bold text-muted uppercase tracking-[0.2em] translate-y-[-2px]">Sessions</span>
                 </div>
             </div>
 
