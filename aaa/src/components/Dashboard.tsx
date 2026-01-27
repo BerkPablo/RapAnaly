@@ -4,16 +4,17 @@ import { ComparisonTable } from "./ComparisonTable";
 import { StatsCards } from "./StatsCards";
 import { computeMetric, METRICS, isValidValue } from "../utils/statsEngine";
 import type { Row, Device, MetricKey } from "../utils/statsEngine";
-import { Info, LayoutDashboard, FileBarChart2 } from "lucide-react";
+import { Info, LayoutDashboard, FileBarChart2, ArrowLeft } from "lucide-react";
 import { ShotAnalysis } from "./ShotAnalysis";
 
 type DashboardProps = {
     rows: Row[];
     onLogout: () => void;
     sessionMode?: string | null;
+    onCloseSession?: () => void;
 };
 
-export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout, sessionMode }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout, sessionMode, onCloseSession }) => {
     const [activeTab, setActiveTab] = useState<Device>("pro2");
 
     const results = useMemo(() => {
@@ -39,6 +40,16 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout, sessionMod
         <div className="flex flex-col gap-6 p-6" style={{ maxWidth: "1400px", margin: "0 auto" }}>
             <header className="flex justify-between items-center">
                 <div className="flex flex-col">
+                    {onCloseSession ? (
+                        <button
+                            onClick={onCloseSession}
+                            className="flex items-center gap-2 text-muted hover:text-white mb-2 transition-colors font-bold text-sm"
+                        >
+                            <ArrowLeft size={16} />
+                            BACK TO HISTORY
+                        </button>
+                    ) : null}
+
                     <h1 className="text-3xl m-0 flex items-center gap-3 font-black italic uppercase tracking-wider">
                         <LayoutDashboard className="text-primary" size={32} />
                         Session Compare
