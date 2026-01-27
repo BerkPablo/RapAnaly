@@ -141,12 +141,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <button className="btn-reset" onClick={onReset} style={{
                     marginTop: "0.5rem",
                     width: "100%",
-                    padding: "0.5rem",
+                    padding: "0.75rem", /* Increased */
                     background: "rgba(239, 68, 68, 0.05)",
                     border: "1px solid rgba(239, 68, 68, 0.2)",
                     borderRadius: "8px",
                     color: "#ef4444",
-                    fontSize: "0.6rem",
+                    fontSize: "0.75rem", /* Increased */
                     fontWeight: "800",
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
