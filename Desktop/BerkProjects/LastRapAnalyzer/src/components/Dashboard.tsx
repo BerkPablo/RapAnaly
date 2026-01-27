@@ -10,9 +10,10 @@ import { ShotAnalysis } from "./ShotAnalysis";
 type DashboardProps = {
     rows: Row[];
     onLogout: () => void;
+    sessionMode?: string | null;
 };
 
-export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout, sessionMode }) => {
     const [activeTab, setActiveTab] = useState<Device>("pro2");
 
     const results = useMemo(() => {
@@ -42,6 +43,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout }) => {
                         <LayoutDashboard className="text-primary" size={32} />
                         Session Compare
                     </h1>
+                    {sessionMode && (
+                        <div className="text-sm font-bold text-muted mt-1 uppercase tracking-widest pl-11">
+                            {sessionMode.replace("_", " ")} MODE
+                        </div>
+                    )}
                 </div>
                 <div className="flex items-center gap-4">
                     {rows.length > 0 && (
