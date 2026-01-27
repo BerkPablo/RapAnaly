@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+// Force update
 import { ComparisonTable } from "./ComparisonTable";
 import { StatsCards } from "./StatsCards";
 import { computeMetric, METRICS, isValidValue } from "../utils/statsEngine";

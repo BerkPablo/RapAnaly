@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+// Force update
 import { Upload } from "lucide-react";
 
 type DeviceSyncProps = {
