@@ -178,3 +178,4 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout, sessionMod
         </div >
     );
 };
+ 
