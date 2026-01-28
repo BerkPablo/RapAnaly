@@ -18,155 +18,148 @@ export const OnboardingPage: React.FC<OnboardingPageProps> = ({ onComplete }) =>
             overflow: "hidden"
         }}>
             <div className="glass-card" style={{
-                width: "800px",
+                width: "900px",
                 maxHeight: "90vh",
                 overflowY: "auto",
                 padding: "3rem",
                 display: "flex",
                 flexDirection: "column",
-                zIndex: 1
+                zIndex: 1,
+                background: "rgba(15, 23, 42, 0.6)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.1)"
             }}>
-                <div className="mb-8 text-center">
-                    <h1 className="text-3xl font-black italic tracking-tighter m-0 mb-2">
+                <div className="mb-10 text-center">
+                    <h1 className="text-4xl font-black italic tracking-tighter m-0 mb-3">
                         Welcome to <span className="text-primary">RAP ANALYZER</span>
                     </h1>
-                    <p className="text-muted" style={{ color: "var(--text-muted)" }}>
-                        Before you begin, here is how the statistics are calculated.
+                    <p className="text-muted text-lg" style={{ color: "var(--text-muted)" }}>
+                        Advanced Shot Analysis & Device Comparison
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-8 mb-8">
-                    <div className="glass-card" style={{ padding: "1.5rem", background: "rgba(255,255,255,0.02)" }}>
-                        <div className="flex items-center gap-2 mb-4">
+                {/* Explicit Formula Section */}
+                <div className="mb-10 p-6 rounded-xl border border-primary/20 bg-primary/5 flex flex-col items-center justify-center text-center">
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Core Calculation Logic</span>
+                    <div className="text-2xl font-black text-white font-mono bg-black/20 px-6 py-3 rounded-lg border border-white/10">
+                        Difference = <span className="text-blue-400">MLM Value</span> - <span className="text-yellow-400">Ref Device</span>
+                    </div>
+                    <p className="text-xs text-muted mt-3 max-w-md">
+                        All statistics (Bias, AbsDiff, STD) are calculated based on this direction.
+                        A <span className="text-blue-400 font-bold">negative</span> result means MLM read lower than the Reference.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-8 mb-10">
+                    {/* Metric Logic Column */}
+                    <div>
+                        <div className="flex items-center gap-3 mb-5 border-b border-white/10 pb-2">
                             <Info className="text-primary" size={20} />
-                            <h3 className="text-lg font-bold m-0">Metric Logic</h3>
+                            <h3 className="text-lg font-bold m-0 uppercase tracking-widest">Metric Definitions</h3>
                         </div>
-                        <div className="grid grid-cols-1 gap-6 text-xs text-muted" style={{ color: "var(--text-muted)" }}>
-                            <div>
-                                <h4 className="text-white font-bold mb-2 uppercase tracking-wider">Data & Capture</h4>
-                                <ul className="space-y-1">
-                                    <li><strong className="text-primary">Count:</strong> Total number of shots in the reference (MLM DS) session.</li>
-                                    <li><strong className="text-primary">Capture (n):</strong> Number of shots where BOTH devices recorded a valid value (non-zero/non-null).</li>
-                                    <li><strong className="text-primary">Capture (%):</strong> <code>(Capture(n) / Count) * 100</code>. The efficiency of the comparison device.</li>
+
+                        <div className="space-y-6">
+                            <div className="glass-card p-4 bg-white/5 border-white/5">
+                                <h4 className="text-xs font-black text-muted uppercase tracking-widest mb-3">Data Capture</h4>
+                                <ul className="space-y-2 text-sm">
+                                    <li className="flex justify-between">
+                                        <span className="text-white font-bold">Capture (n)</span>
+                                        <span className="text-muted">Valid shots on BOTH devices</span>
+                                    </li>
+                                    <li className="flex justify-between">
+                                        <span className="text-white font-bold">Capture (%)</span>
+                                        <span className="text-muted">Efficiency rate</span>
+                                    </li>
                                 </ul>
                             </div>
 
-                            <div>
-                                <h4 className="text-white font-bold mb-2 uppercase tracking-wider">Difference Metrics</h4>
-                                <ul className="space-y-1">
-                                    <li><strong className="text-primary">AvgDiff (Bias):</strong> Average of <code>(Pro Value - MLM Value)</code>. Indicates systematic error (high or low).</li>
-                                    <li><strong className="text-primary">AvgAbsDiff:</strong> Average of <code>|Pro Value - MLM Value|</code>. The average magnitude of error.</li>
-                                    <li><strong className="text-primary">Median:</strong> The middle value of the Difference set. Less sensitive to outliers than Average.</li>
+                            <div className="glass-card p-4 bg-white/5 border-white/5">
+                                <h4 className="text-xs font-black text-muted uppercase tracking-widest mb-3">Statistical Error</h4>
+                                <ul className="space-y-2 text-sm">
+                                    <li className="flex justify-between">
+                                        <span className="text-white font-bold">Bias (AvgDiff)</span>
+                                        <span className="text-muted">Systematic error direction</span>
+                                    </li>
+                                    <li className="flex justify-between">
+                                        <span className="text-white font-bold">AbsDiff</span>
+                                        <span className="text-muted">Avg magnitude of error</span>
+                                    </li>
+                                    <li className="flex justify-between">
+                                        <span className="text-white font-bold">STD</span>
+                                        <span className="text-muted">Consistency / Dispersion</span>
+                                    </li>
                                 </ul>
                             </div>
+                        </div>
+                    </div>
 
-                            <div>
-                                <h4 className="text-white font-bold mb-2 uppercase tracking-wider">Statistical Spread</h4>
-                                <ul className="space-y-1">
-                                    <li><strong className="text-primary">Min / Max:</strong> The smallest and largest Difference values observed.</li>
-                                    <li><strong className="text-primary">STD (Standard Deviation):</strong> Measures dispersion. <code>√(Σ(x - mean)² / (n-1))</code>. Lower is more consistent.</li>
-                                    <li><strong className="text-primary">90th PCTL (P90):</strong> The value below which 90% of the absolute differences fall. A reliable accuracy upper bound.</li>
-                                </ul>
+                    {/* Classification Column */}
+                    <div>
+                        <div className="flex items-center gap-3 mb-5 border-b border-white/10 pb-2">
+                            <BarChart2 className="text-primary" size={20} />
+                            <h3 className="text-lg font-bold m-0 uppercase tracking-widest">Accuracy Tiers</h3>
+                        </div>
+
+                        <div className="space-y-3">
+                            <div className="glass-card p-4 flex items-center gap-4 border-l-4 border-l-green-500 bg-gradient-to-r from-green-500/10 to-transparent">
+                                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500">
+                                    <CheckCircle2 size={16} />
+                                </div>
+                                <div>
+                                    <div className="font-black text-green-400 uppercase tracking-wider text-sm">Good</div>
+                                    <div className="text-xs text-muted">High accuracy, minimal deviation</div>
+                                </div>
                             </div>
 
-                            <div>
-                                <h4 className="text-white font-bold mb-3 uppercase tracking-wider">Classification & Thresholds</h4>
-                                <div className="space-y-3">
-                                    <div className="text-xs mb-2">
-                                        <strong className="text-primary">Thresholds:</strong> Dynamic limits (A & B) specific to each metric type.
-                                    </div>
+                            <div className="glass-card p-4 flex items-center gap-4 border-l-4 border-l-yellow-500 bg-gradient-to-r from-yellow-500/10 to-transparent">
+                                <div className="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500">
+                                    <Info size={16} />
+                                </div>
+                                <div>
+                                    <div className="font-black text-yellow-400 uppercase tracking-wider text-sm">Moderate</div>
+                                    <div className="text-xs text-muted">Acceptable variance range</div>
+                                </div>
+                            </div>
 
-                                    <div className="grid grid-cols-1 gap-2">
-                                        <div className="flex items-center p-2 rounded bg-green-500/10 border border-green-500/20">
-                                            <div className="w-2 h-2 rounded-full bg-green-500 mr-3 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
-                                            <div className="flex flex-col">
-                                                <span className="text-green-400 font-bold uppercase tracking-wider text-[0.65rem]">Good</span>
-                                                <span className="text-[0.65rem] opacity-80">Diff &lt; Threshold A</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex items-center p-2 rounded bg-yellow-500/10 border border-yellow-500/20">
-                                            <div className="w-2 h-2 rounded-full bg-yellow-500 mr-3 shadow-[0_0_8px_rgba(234,179,8,0.6)]"></div>
-                                            <div className="flex flex-col">
-                                                <span className="text-yellow-400 font-bold uppercase tracking-wider text-[0.65rem]">Moderate</span>
-                                                <span className="text-[0.65rem] opacity-80">Between A & B</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex items-center p-2 rounded bg-red-500/10 border border-red-500/20">
-                                            <div className="w-2 h-2 rounded-full bg-red-500 mr-3 shadow-[0_0_8px_rgba(239,68,68,0.6)]"></div>
-                                            <div className="flex flex-col">
-                                                <span className="text-red-400 font-bold uppercase tracking-wider text-[0.65rem]">Bad</span>
-                                                <span className="text-[0.65rem] opacity-80">Diff &gt; Threshold B</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div className="glass-card p-4 flex items-center gap-4 border-l-4 border-l-red-500 bg-gradient-to-r from-red-500/10 to-transparent">
+                                <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-500">
+                                    <Info size={16} />
+                                </div>
+                                <div>
+                                    <div className="font-black text-red-400 uppercase tracking-wider text-sm">Bad</div>
+                                    <div className="text-xs text-muted">Significant outlier</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div className="glass-card" style={{ padding: "1.5rem", background: "rgba(255,255,255,0.02)" }}>
-                        <div className="flex items-center gap-2 mb-4">
-                            <BarChart2 className="text-primary" size={20} />
-                            <h3 className="text-lg font-bold m-0">Accuracy Classification</h3>
-                        </div>
-                        <ul className="text-sm text-muted flex flex-col gap-3" style={{ color: "var(--text-muted)", listStyle: "none", padding: 0 }}>
-                            <li className="flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                                <strong>Good:</strong> Difference within tight tolerance
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                                <strong>Moderate:</strong> Acceptable deviation
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                                <strong>Bad:</strong> Significant outlier
-                            </li>
-                        </ul>
-                    </div>
                 </div>
 
-                <div className="mb-8">
-                    <h3 className="text-lg font-bold mb-4">How to Use</h3>
-                    <div className="flex flex-col gap-4">
-                        <div className="flex items-start gap-3">
-                            <div className="rounded-full bg-primary/20 p-1 mt-1 text-primary">
-                                <CheckCircle2 size={16} />
-                            </div>
-                            <div>
-                                <strong className="block text-white">1. Upload CSV Data</strong>
-                                <span className="text-sm text-muted" style={{ color: "var(--text-muted)" }}>: Use the sidebar to upload CSV files for MLM DS, PRO 2.0, or PRO 3.0.</span>
-                            </div>
+                <div className="mt-auto pt-8 border-t border-white/10">
+                    <h3 className="text-center text-xs font-black uppercase tracking-[0.3em] text-muted mb-6">Workflow</h3>
+                    <div className="grid grid-cols-3 gap-4">
+                        <div className="text-center p-4">
+                            <div className="w-10 h-10 mx-auto rounded-full bg-primary/20 flex items-center justify-center text-primary mb-3 font-bold">1</div>
+                            <h4 className="font-bold text-white text-sm mb-1">Upload CSV</h4>
+                            <p className="text-xs text-muted">Import data for MLM DS and Pro 2.0/3.0</p>
                         </div>
-                        <div className="flex items-start gap-3">
-                            <div className="rounded-full bg-primary/20 p-1 mt-1 text-primary">
-                                <CheckCircle2 size={16} />
-                            </div>
-                            <div>
-                                <strong className="block text-white">2. Compare Sessions</strong>
-                                <span className="text-sm text-muted" style={{ color: "var(--text-muted)" }}>: Toggle between Pro 2.0 and Pro 3.0 tabs to see detailed side-by-side comparisons.</span>
-                            </div>
+                        <div className="text-center p-4">
+                            <div className="w-10 h-10 mx-auto rounded-full bg-primary/20 flex items-center justify-center text-primary mb-3 font-bold">2</div>
+                            <h4 className="font-bold text-white text-sm mb-1">Compare</h4>
+                            <p className="text-xs text-muted">View side-by-side metrics and diffs</p>
                         </div>
-                        <div className="flex items-start gap-3">
-                            <div className="rounded-full bg-primary/20 p-1 mt-1 text-primary">
-                                <CheckCircle2 size={16} />
-                            </div>
-                            <div>
-                                <strong className="block text-white">3. Analyze & Save</strong>
-                                <span className="text-sm text-muted" style={{ color: "var(--text-muted)" }}>: Review the statistical breakdown and save your session results to history.</span>
-                            </div>
+                        <div className="text-center p-4">
+                            <div className="w-10 h-10 mx-auto rounded-full bg-primary/20 flex items-center justify-center text-primary mb-3 font-bold">3</div>
+                            <h4 className="font-bold text-white text-sm mb-1">Save & Track</h4>
+                            <p className="text-xs text-muted">Store session results in history</p>
                         </div>
                     </div>
                 </div>
 
                 <button
                     onClick={onComplete}
-                    className="btn-primary flex items-center justify-center gap-2 mt-auto self-end"
-                    style={{ padding: "1rem 2rem", fontSize: "1rem" }}
+                    className="btn-primary flex items-center justify-center gap-2 mt-8 w-full py-4 text-lg tracking-widest hover:scale-[1.01] active:scale-[0.99]"
                 >
-                    GET STARTED
+                    ENTER DASHBOARD
                     <ArrowRight size={20} />
                 </button>
             </div>
