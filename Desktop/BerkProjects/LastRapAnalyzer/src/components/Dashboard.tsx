@@ -4,7 +4,7 @@ import { ComparisonTable } from "./ComparisonTable";
 import { StatsCards } from "./StatsCards";
 import { computeMetric, METRICS, isValidValue } from "../utils/statsEngine";
 import type { Row, Device, MetricKey } from "../utils/statsEngine";
-import { Info, LayoutDashboard, FileBarChart2, ArrowLeft } from "lucide-react";
+import { Info, LayoutDashboard, FileBarChart2, ArrowLeft, Zap } from "lucide-react";
 import { ShotAnalysis } from "./ShotAnalysis";
 
 type DashboardProps = {
@@ -59,7 +59,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout, sessionMod
                 <div className="flex items-center gap-4">
                     {sessionMode && (
                         <div className="glass-card p-2 px-4 flex items-center gap-3">
-                            <span className="text-sm font-bold uppercase tracking-widest text-primary">
+                            <Zap size={16} className="text-primary" />
+                            <span className="text-sm font-bold uppercase tracking-widest text-white">
                                 {sessionMode === "soft_toss" ? "SOFT TOSS MODE" : "TEE MODE"}
                             </span>
                         </div>
