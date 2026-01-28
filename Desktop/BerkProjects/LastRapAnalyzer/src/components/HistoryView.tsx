@@ -48,8 +48,11 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ sessions, onLoad, onDe
                             gap: "1rem"
                         }}>
                             {/* Column 1: Mode */}
-                            <div className="session-mode-badge" style={{ fontSize: "1.2rem" }}>
-                                {session.mode.replace("_", " ")}
+                            <div className="flex flex-col justify-center">
+                                <span className="text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-0.5">SESSION MODE</span>
+                                <span className="text-lg font-black italic text-white tracking-tighter uppercase leading-none">
+                                    {session.mode.replace("_", " ")}
+                                </span>
                             </div>
 
                             {/* Column 2: Shot Count */}
