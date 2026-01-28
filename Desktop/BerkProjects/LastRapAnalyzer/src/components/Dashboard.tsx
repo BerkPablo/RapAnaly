@@ -54,15 +54,16 @@ export const Dashboard: React.FC<DashboardProps> = ({ rows, onLogout, sessionMod
                         <LayoutDashboard className="text-primary" size={32} />
                         Session Compare
                     </h1>
+
+                </div>
+                <div className="flex items-center gap-4">
                     {sessionMode && (
-                        <div className="flex items-center gap-2 mt-1 pl-11">
-                            <span className="text-xs bg-primary/20 text-primary border border-primary/30 px-2 py-0.5 rounded uppercase font-bold tracking-widest">
+                        <div className="glass-card p-2 px-4 flex items-center gap-3">
+                            <span className="text-sm font-bold uppercase tracking-widest text-primary">
                                 {sessionMode === "soft_toss" ? "SOFT TOSS MODE" : "TEE MODE"}
                             </span>
                         </div>
                     )}
-                </div>
-                <div className="flex items-center gap-4">
                     {rows.length > 0 && (
                         <div className="glass-card p-2 px-4 flex items-center gap-3">
                             <FileBarChart2 size={16} className="text-primary" />
